@@ -1,0 +1,22 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<HTML> <!--HTML 언어로 작성되어 있음-->
+<HEAD> <!--글의 머릿말-->
+    <META charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <SCRIPT>
+        var name = "Hello";
+
+        function call1() {
+            // url에 해당하는 웹 페이지 현재 창에 뜸
+            window.location = "http://www.kopo.ac.kr";
+            window.status = "Hello, 어디에 표시되나요";
+            // 팝업창에 url에 해당하는 페이지 뜸
+            window.open("http://www.kopo.ac.kr","newWindow","toolbar=yes, width=200");
+        }
+    </script> <!--SCRIPT END-->
+</head> <!--HEAD END-->
+
+<BODY>
+    <SCRIPT>call1();</SCRIPT><br> <!--call1 함수 호출-->
+    Good...
+</BODY> <!--BODY END-->
+</HTML> <!--HTML END-->

@@ -1,0 +1,45 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>배경 꾸미기</title>
+    <style>
+        div { /* Type Selector */
+            /* div tag 내 배경색:darkorange,
+               배경크기: 100px times 100px 
+               배경화면: spongebob.jpg 
+               배경화면 반복설정: 반복-yes
+               배경화면 위치: 정가운데 */
+            background-color: darkorange;
+            background-size: 100px 100px;
+            background-image: url("spongebob.jpg");
+            background-repeat: repeat-y;
+            background-position: center center; }
+
+        div { /* Type Selector */
+            /* div block의 width: 200px,
+               높이: 200px,
+               색깔: white,
+               font-size: 16px 로 지정 */
+            width: 200px;
+            height: 200px;
+            color: white;
+            font-size: 16px; }
+    </style>
+</head>
+
+<body>
+    <h3> div 박스에 배경 꾸미기</h3> <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <!--<div> Division의 약자, 웹사이트 레이아웃 만들 때 주로 사용
+        웹페이지에서 논리적 구분을 정의하는 태그이며, 각각의 블록을 알맞게
+        배치하고 CSS를 활용하여 스타일 적용 가능-->
+    <div>SpongeBob is an over-optimistic
+        sponge that annoys other characters.</div>
+</body>
+
+</html>

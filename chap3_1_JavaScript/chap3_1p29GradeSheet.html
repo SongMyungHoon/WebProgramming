@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<html> <!--HTML 언어로 작성되어 있음-->
+<head> <!--글의 머릿말-->
+    <meta charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <script>
+        var studentName = new Array();
+        var studentKor = new Array();
+        var studentEng = new Array();
+        var studentMath = new Array();
+        var pageSumKor = 0;
+        var pageSumEng = 0;
+        var pageSumMat = 0;
+        var pageTotalSum = 0;
+        var totalSumKor = 0;
+        var totalSumEng = 0;
+        var totalSumMat = 0;
+        var totalSum = 0;
+        var numPerson = 30;
+        
+        var date = new Date();
+        // "YYYY-MM-dd hh:mm" format으로 Date를 출력한다
+        function printDate() {
+            var month = (date.getMonth() + 1); // month 1월 0부터 시작
+            var day = date.getDate();
+            // day가 10보다 작으면 앞에 0 붙여준다
+            day = day >= 10 ? day : '0' + day;
+            var hour = date.getHours();
+            // hour가 10보다 작으면 앞에 0 붙여준다
+            hour = hour >= 10 ? hour : '0' + hour;
+            var min = date.getMinutes();
+            // min이 10보다 작으면 앞에 0 붙여준다
+            min = min >= 10 ? min : '0' + min;
+            var sec = date.getSeconds();
+            // sec이 10보다 작으면 앞에 0 붙여준다
+            sec = sec >= 10 ? sec : '0' + sec;
+            document.write(date.getFullYear() + "-" +
+                            month + "-" + day + " " +
+                            hour + ":" + min + ":" + sec
+                            );
+        }
+        function dataSet() {
+            var id;
+            for(i = 0; i < numPerson; i++) {
+                id = i + 1;
+                id = id >= 10 ? id : '0' + id;
+                studentInfo.push({studentId: id, name: ("홍길" + id), kor: Math.random()*100, eng: Math.random()*100, mat: Math.random()*100});
+                console.log("id: "+ id + ", studentInfo["+ id + "]: " + studentInfo[id]);
+                    // ", studentInfo["+ id + "].name: " + studentInfo[id].name + 
+                    // ", studentInfo["+ id + "].kor: " + studentInfo[id].kor + 
+                    // ", studentInfo["+ id + "].eng: " + studentInfo[id].eng +
+                    // ", studentInfo["+ id + "].mat: " + studentInfo[id].mat);
+            }
+        }
+        function headerPrint(page) {
+
+        }
+    </script>
+</head>
+<body>
+    <script>dataSet();</script>
+</body>
+</html>

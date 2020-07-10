@@ -1,0 +1,56 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>relative 배치</title>
+    <style> /* CSS 스타일 시트 작성 */
+        /* inline블록의 높이와 너비를 50px로 설정한다.
+            border를 1로 설정해서 테두리를 얇게 한다.
+            글자: 가운데 정렬, 글자색: white,배경색: red */
+        div { /* type selector */
+            /* div block에 option 설정 */
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            border: 1px solid lightgray;
+            text-align: center;
+            color: white;
+            background: red; }
+            
+        #down:hover { /* id selector */
+            /* id=donw의 경우, 사용자의 커서가 해당 요소에 올라가
+               있는 경우에 대해 설정 지정 
+               position: relative의 경우 left:20px이면 태그 안쪽 방향으로
+               20px 만큼 이동, 바깥쪽으로 이동하려면 -20px 설정해야함*/
+            position: relative;
+            left: 20px;
+            top: 20px;
+            background: green; }
+
+        #up:hover {  /* id selector */
+            /* id=donw의 경우, 사용자의 커서가 해당 요소에 올라가
+               있는 경우에 대해 설정 지정 
+               position: relative의 경우 left:20px이면 태그 안쪽 방향으로
+               20px 만큼 이동, 바깥쪽으로 이동하려면 -20px 설정해야함*/
+            position: relative;
+            right: 20px;
+            bottom: 20px;
+            background: green; }
+    </style>
+</head>
+
+<body>
+    <h3>상대 배치, relative</h3>  <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <div>T</div> <!--div style 적용-->
+    <div id="down">h</div> <!--id selector: down적용-->
+    <div>a</div> <!--div style 적용-->
+    <div>n</div> <!--div style 적용-->
+    <div id="up">k</div>  <!--id selector:up 적용-->
+    <div>s</div>  <!--div style 적용-->
+</body>
+</html>

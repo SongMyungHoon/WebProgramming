@@ -1,0 +1,24 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<html> <!--HTML 언어로 작성되어 있음-->
+<head> <!--글의 머릿말-->
+    <meta charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <title>기본함수 몇 가지</title>
+</head>
+<body>
+    <script>
+        /* 화면에 "Enter Name"를 쓰고, 초기값으로 "홍길동"을 넣어준다. */
+        name = prompt("Enter Name", "홍길동");
+        /* 화면에 "Continue ? Click Button" 이라는 문자열을 출력하고
+           확인 버튼을 누르면 answer에 true 저장 아니면 false 저장 */
+        if (confirm("Continue ?\nClick Button") == true) {
+            answer = "true";
+        } else {
+            answer = "false";
+        }
+        /* "Name : 입력값\nAnswer : answer값"을 경고창으로 띄운다. */
+        alert("Name : " + name + "\nAnswer : " + answer);
+        /* 웹 브라우저에 "Your Name is answer 값" 을 출력한다.*/
+        document.write(" Your Name is " + answer);
+    </script>
+</BODY> <!--BODY END-->
+</HTML> <!--HTML END-->

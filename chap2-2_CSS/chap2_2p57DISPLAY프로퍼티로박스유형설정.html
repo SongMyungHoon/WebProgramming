@@ -1,0 +1,46 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>display 프로퍼티</title>
+    <style> /* CSS 스타일 시트 작성 */
+        div { /* type selector */
+            /* div block의 경계선: 2px, solid, 선색: yellow green */
+            border: 2px solid yellowgreen;
+            color: blue; /* block 내 글씨색: blue */
+            background: aliceblue /* block 내 배경색: aliceblue */;
+        }
+
+        span { /* type selector */
+            /* span tag 내 경계선 두께: 3px, dotted 형태, color: red
+               배경색: yellow */
+            border: 3px dotted red;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>인라인, 인라인 블록, 블록</h3> <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <!--해당 div tag내 display:none 설정: 내용 안보임-->
+    나는<div style="display:none">
+        div(none)</div>입니다.<br><br>
+    <!--해당 div tag내 display:inline 설정: block boxing 처리-->
+    나는<div style="display:inline">
+        div(inline)</div>입니다.<br><br>
+    <!--해당 div tag내 display:inline-block 설정, box 높이: 50px-->
+    나는<div style="display:inline-block;height:50px">
+        div(inline-block)</div>입니다.<br><br>
+    <!--해당 div tag내 span 중복 적용, span 내 display:block 옵션으로
+        boxing 처리-->
+    나는<div>div<span style="display:block">
+            span(block)</span>입니다.<br><br>
+    </div>
+</body>
+
+</html>

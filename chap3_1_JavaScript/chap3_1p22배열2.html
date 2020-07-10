@@ -1,0 +1,48 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<HTML> <!--HTML 언어로 작성되어 있음-->
+<HEAD> <!--글의 머릿말-->
+    <META charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <script>
+        function print(arr) { /* print 함수 선언 */
+            console.log(arr)  // parameter arr를 콘솔화면에 출력
+            for (i = 0; i < arr.length; i++) { // arr length 만큼 for loop 반복
+                console.log(i); // index를 콘솔에 출력
+                // 브라우저에 인덱스와 arr 값 출력
+                document.write('arr[' + i + '] : ' + arr[i] + '<br>');
+            } // for loop end
+            document.write('<br>'); // 줄 바꿈
+            for (idx in arr) {
+                document.write('arr[' + idx + '] : ' + arr[idx] + '<br>');
+            } // for loop end
+            document.write('<br>');
+            for (obj of arr) { // arr의 모든 data object에 대해
+                document.write(obj + '<br>'); // 각 obj 를 출력하고 줄바꿈
+            } // for loop end
+            document.write('<br>'); // 줄 바꿈 수행
+            // array의 모든 data object에 대해 index와 value를 출력
+            arr.forEach((value, index, array) => { 
+                document.write('arr[' + index + '] : ' + value + '<br>');
+            }); // for each end
+            document.write('<br>'); // 줄 바꿈 수행
+            // array의 모든 data object에 대해 index와 value를 출력
+            arr.forEach(function (value, index, array) {
+                document.write('arr[' + index + '] : ' + value + '<br>');
+            }); // for each end
+            document.write('<br>'); // 줄바꿈 수행
+            // array의 모든 data object에 대해 index와 value를 출력
+            arr.map((values, index, array) => {
+                document.write('arr[' + index + '] : ' + value + '<br>');
+            }); // for each end
+        }
+    </script> <!--SCRIPT END-->
+</head> <!--HEAD END-->
+
+<body>
+    <script>
+        // "빨간색", 1010, "deadfire", "JavaScript", "XX"를 element로 하는 Array 선언
+        var arr = new Array("빨간색", 1010, "deadfire", "Javascript", "XX");
+        // print 함수의 argument로 arr 입력 후 print 함수 호출
+        print(arr);
+    </script> <!--SCRIPT END-->
+</body> <!--BODY END-->
+</html> <!--HTML END-->

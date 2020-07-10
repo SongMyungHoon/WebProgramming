@@ -1,0 +1,156 @@
+<%@page import="java.io.*"%>
+<%@ page import="java.util.*"%>
+
+<%@ page contentType="text/html; charset=utf-8" %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+        <style>
+        </style>
+    </head>
+    
+    <body>
+        <%-- 페이징에 필요한 변수 선언 --%>
+        <%
+            // 한 화면에 출력할 데이터 수
+            int pageSize = 10;
+            // 한 화면에 출력되는 버튼의 수
+            int pageBlock = 10;
+            // 모든 데이터의 수
+            int total = 0;
+            // 출력해야 할 총 페이지 수 
+            int totalPage = 0;
+            // 현재 페이지 번호 : url에서 인자를 pg인자를 받아옴 null 값이면 페이지 번호는 1
+            int cpage = request.getParameter("pg")!=null?Integer.parseInt(request.getParameter("pg")):1;
+        %>
+
+        <%-- 파일 읽어와서 데이터 셋팅 --%>
+        <%
+            // 상대경로로 텍스트 파일 불러오기
+            String f = application.getRealPath("/전국무료와이파이표준데이터.txt");
+            BufferedReader br = new BufferedReader(new FileReader(f));
+            String readtxt;
+            if((readtxt = br.readLine())==null) {
+                out.println("빈 파일입니다\n");
+                return;
+            }
+            // 현재 나의 위도, 경도 지정
+            double lat=37.3860521;
+            double lng=127.1214038;
+            // 한줄씩 읽을 때마다 count할 변수
+            int LineCnt=0;
+            // 주소 값을 저장할 ArrayList 선언
+            ArrayList<String> address = new ArrayList<>();
+            // 경도 값을 저장할 ArrayList 선언
+            ArrayList<String> latitude = new ArrayList<>();
+            // 위도 값을 저장할 ArrayList 선언
+            ArrayList<String> longtitude = new ArrayList<>();
+             // 거리 값을 저장할 ArrayList 선언
+            ArrayList<Double> dists = new ArrayList<>();
+            // 텍스트 파일을 한 줄 씩 읽으면서
+            while((readtxt=br.readLine())!=null) {
+                // 탭으로 구분하여 String형 배열 field에 저장
+                String[] field = readtxt.split("\t");
+                // 9번째 필드 값을 address에 저장
+                address.add(field[9]);
+                // 12번째 필드 값을 latitude에 저장
+                latitude.add(field[12]);
+                // 13번째 필드 값을 longtitude에 저장
+                longtitude.add(field[13]);
+                // 내 위치와의 거리 구하기
+                double dist=Math.sqrt( Math.pow(Double.parseDouble(field[12])-lat,2)
+                + Math.pow(Double.parseDouble(field[13])-lng,2));
+                // dist 값을 dists에 저장
+                dists.add(dist);
+                // 한 줄 씩 읽을때마다 count
+                LineCnt++;
+                }
+        %>
+        
+        <%-- 테이블 필드 구성 --%>
+        <%-- 테이블 시작 --%>
+        <table border=1 width=900px style='margin-left:auto; margin-right:auto; table-layout:fixed;'> 
+        <tr align=center>
+        <td width=50px>번호</td>
+        <td width=400px> 주소</td>
+        <td>위도</td>
+        <td>경도</td>
+        <td width=180px>거리</td>
+        </tr>
+
+        <%-- 테이블 내용 구성 --%>
+        <%
+            // url에서 from의 값을 받아서 from에 저장
+            String from  = request.getParameter("from");
+            // url에서 cnt의 값을 받아서 cnt에 저장 
+            String cnt  = request.getParameter("cnt");
+            // url에서 받아온 값을 int로 변환하여 저장할 변수
+            int fromPT;
+            int cntPT;
+            // url에서 from이나 cnt의 값이 없으면 (첫페이지 처리 위함)
+            if(from == null || cnt == null) {
+            // fromPT=0, cntPT=10인 것으로 판단
+                fromPT = 0;
+                cntPT = 10;
+            } else {
+                fromPT = Integer.parseInt(from);
+                cntPT = Integer.parseInt(cnt);
+            } 
+        /* i가 fromPT~ fromPT+cntPT 사이에 있는 동안 
+        from번째 부터 cnt만큼의 데이터를 출력하기 위함 */
+        for (int i=fromPT; i<fromPT+cntPT ; i++) {  
+         %>
+        <tr align=center>
+        <td><%=i+1 %></td>
+        <td align=left><%= address.get(i) %></td>
+        <td><%= latitude.get(i) %></td>
+        <td><%= longtitude.get(i) %></td>
+        <td><%= dists.get(i) %></td>
+        </tr>
+        <% } %>
+        </table>
+        <%-- 테이블 끝 --%>
+
+        <%-- pagination을 위한 처리 --%>
+        <%
+        // 전체 데이터 수 계산
+        total = LineCnt;
+        // 전체 페이지 수 계산
+        totalPage = ((total-1)/pageSize)+1;
+        // 이전페이지 계산
+        int prevPage = (int)Math.floor((cpage-1)/pageBlock)*pageBlock;
+        // 다음 페이지 계산
+        int nextPage = prevPage + pageBlock + 1;
+        %>
+
+        <%-- 버튼 테이블 구성 --%>
+        <table border="0" align="center" width="0%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <%-- << 제일 첫번째 페이지 보여주는 버튼 --%>
+                    <a href="wifi.jsp">&lt&lt</a>
+                    <%-- 이전 장의 첫 페이지를 보여주기 위한 < 버튼, 이전페이지가 0보다 작으면 없음 --%>
+                    <% if(prevPage >0) { %>
+                    <a href="wifi.jsp?pg=<%=prevPage %>&from=<%=prevPage*10-10%>&cnt=10">&lt</a>
+                    <%}%>
+                    <%-- 10개의 버튼 생성 --%>
+                    <%for(int i = 1 + prevPage; i < nextPage && i <= totalPage; i++) { 
+                    // i==totalPage 이면 cnt가 10일수도, 아닐수도 있음
+                    if(i==totalPage) { %>
+                        <a href="wifi.jsp?pg=<%=i %>&from=<%= i*10-10%>&cnt=<%=total-(int)(total/10)*10%>"><%=i%></a>
+                    <%} else {%>
+                        <a href="wifi.jsp?pg=<%=i %>&from=<%= i*10-10%>&cnt=10"><%=i%></a>
+                    <%}}%>
+                    <%-- > & >> 버튼 출력 --%>
+                    <% if(totalPage >= nextPage) { %>
+                        <%-- 다음 장의 첫 페이지를 보여주기 위한 > 버튼, 다음페이지가 총 페이지보다 크거나 같으면 없음 --%>
+                        <a href="wifi.jsp?pg=<%=nextPage %>&from=<%=nextPage*10-10%>&cnt=10">&gt</a>
+                        <%-- 맨 마지막 페이지를 보여주기 위한 >> 버튼 --%>
+                        <a href="wifi.jsp?pg=<%=totalPage %>&from=<%=(int)(total/10)*10%>&cnt=<%=total-(int)(total/10)*10%>">&gt&gt</a>
+                    <% } %>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

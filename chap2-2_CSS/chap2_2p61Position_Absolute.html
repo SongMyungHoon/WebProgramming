@@ -1,0 +1,47 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>절대 배치</title>
+    <style>
+        div { /* type selector */
+            /* div block에 option 설정 */
+            display: inline-block;
+            /* 절대배치, 
+               브라우저 크기가 변해도 태그 위치는 변경되지 않음 */
+            position: absolute;
+            border: 1px soild lightgray;
+        }
+
+        div > p {  /* child selector */
+            /* div tag 내 child인 p tag에 적용 */
+            display: inline-block; /* block 내 boxing 처리 */
+            position: absolute; /* absolute: 절대배치 */
+            height: 20px; /* box 높이 20px */
+            width: 15px; /* box 너비 20px */
+            background: lightgray;  /* box 배경색: lightgray */
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Merry Christmas!</h3> <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <p>예수님이 탄생하셨습니다.</p> <!--<p>: 줄바꿈과 동시에 한 줄 띈다-->
+    <div> <!--div style 적용-->
+        <!--img파일 불러오기, 높이와 너비, 이름 지정-->
+        <img src="christmasTree.jpg" width="230" height="180" alt="크리스마스 트리">
+        <!--특정 p tag 내 글자의 위치 각각 적용-->
+        <p style="left:50px;top:30px">M</p>
+        <p style="left:100px;top:0px">E</p>
+        <p style="left:100px;top:80px">R</p>
+        <p style="left:150px;top:11px">R</p>
+        <p style="left:30px;top:130px">Y</p>
+    </div>
+</body>
+
+</html>

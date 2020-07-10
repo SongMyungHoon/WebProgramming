@@ -1,0 +1,29 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<html> <!--HTML 언어로 작성되어 있음-->
+<head> <!--글의 머릿말-->
+    <meta charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <title>기본 지식 - Object</title> <!--title bar에 새겨질 글자 정의-->
+    <script>
+        function call1() { /* call1 함수 선언 */
+            var d = new Date(2020, 11, 31); // 2020년 12월 31일
+            document.write(" 년도는 : " + d.getFullYear() +
+                " 월은 : " + (d.getMonth() + 1) +
+                " 일은 : " + d.getDate() +
+                " 요일은 : " + d.getDay() +
+                " 시는 : " + d.getHours() +
+                " 분은 : " + d.getMinutes() +
+                " 초는 : " + d.getSeconds() +
+                " 밀리초 : " + d.getMilliseconds() + "<HR>");
+            // 2020년 12월 31일을 document write로 월, 일, 요일, 시, 분, 밀리초 단위로 출력
+            d.setYear(2010); // d의 연도를 2010년으로 설정
+            document.write(d + "<HR>"); // 2010년 12월31을 출력하고 선 긋기
+            d.setMonth(7); // 월을 7(8월)으로 설정
+            document.write(d + "<HR>"); // 2010년 8월 31일을 출력 후 선 긋기
+        }
+    </script> <!--SCRIPT END-->
+</head> <!--HEAD END-->
+
+<body>
+    <script>call1();</script> <!--call1 함수 호출-->
+</BODY> <!--BODY END-->
+</HTML> <!--HTML END-->

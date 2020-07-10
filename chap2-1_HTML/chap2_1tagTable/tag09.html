@@ -1,0 +1,51 @@
+<html> <!-- HTML 언어로 작성되어 있음을 알려줌-->
+<!--글의 머릿말-->
+<head> <!--head start-->
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>배경 이미지 작업하기</title>
+</head> <!--head end-->
+<!--본문에 해당하는 부분-->
+<!--body start-->
+<!--text="color code":글자색 지정,
+    link="color code":하이퍼링크 색 지정,
+    vlink="color code":한 번 누른 적이 있는 하이퍼링크의 색을 지정,
+    alink="color code":누르고 있는 동안 하이퍼링크 색 지정-->
+<body text="#000000" link="#ff0000" vlink="#00ff00" alink="0000ff">
+    <!--TABLE border: 테이블 경계선 굵기를 지정,
+        width: 너비를 지정
+        cellspacing: 셀과 셀 사이의 여백
+        cellpadding: 셀과 경계산 사이의 여백-->
+    <table width=800 border=1 cellspacing=0 cellpadding=10>
+        <!--background color 지정-->
+        <tr bgcolor=#c2c2c1>
+            <td align=center>형식</td> <!--글자 가운데 정렬-->
+            <td align=center>구성</td> <!--글자 가운데 정렬-->
+            <td align=center>내용</td> <!--글자 가운데 정렬-->
+        </tr> <!--TR END-->
+        <tr> <!--TR START-->
+            <!--글자 가운데 정렬, 
+                &lt: 오른쪽으로 열린 부등호 ('<') 표기
+                &gt: 왼쪽으로 열린 부등호 ('>') 표기
+                <td rowspan="합칠 셀의 개수"> 내용</td>-->
+            <td align=center rowspan="2">&ltBODY&gt</td>
+            <!--글자 가운데 정렬, 
+                &lt: 오른쪽으로 열린 부등호 ('<') 표기
+                &gt: 왼쪽으로 열린 부등호 ('>') 표기-->
+            <td align=center>&ltBODY BACKGROUND=&quot...&quot&gt</td>
+            <!--글자 왼쪽 정렬-->
+            <td align=left>배경 이미지를 띄워줍니다.</td>
+        </tr> <!--TR END-->
+        <tr> <!--TR START-->
+            <!--글자 가운데 정렬, 
+                &lt: 오른쪽으로 열린 부등호 ('<') 표기
+                &gt: 왼쪽으로 열린 부등호 ('>') 표기-->
+            <td align=center>&ltBODY BGCOLOR=&quot#nnnnnn&quot&gt</td>
+            <!--글자 왼쪽 정렬-->
+            <td align=left>배경 색깔을 지정해 줍니다.</td>
+        </tr> <!--TR END-->
+    </table> <!--TABLE END-->
+</body> <!--BODY END-->
+<!--HTML END-->
+</html>

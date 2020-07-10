@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+   <title>emart</title>
+    <style>
+        div {
+            font-family: "굴림";
+            font-size: 10pt;
+        }
+
+        #logo {
+            float: left;
+            width: 120px;
+            height: 50px;
+            font-size: 25pt;
+            text-align: center;
+
+        }
+
+        #store_info {
+            float: left;
+            width: 183px;
+            height: 50px;
+        }
+    </style>
+  <script type="text/javascript">
+        var itemArray = [];
+        itemArray.push({ name: '초코에몽180ml*555555555', unitPrice: 3780, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: 'BE정장벨트15F', unitPrice: 15000, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '(G)기본고무줄4-7', unitPrice: 2980, itemAmount: 1, taxFree: true });
+        itemArray.push({ name: '서울우유 2.3L', unitPrice: 4950, itemAmount: 2, taxFree: false });
+        itemArray.push({ name: '그릭 베리믹스95g*8', unitPrice: 5980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '하림 치킨너겟480+1', unitPrice: 8480, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '로레알헤어오일브라', unitPrice: 13300, itemAmount: 2, taxFree: false });
+        itemArray.push({ name: '바나나스페셜 240ml', unitPrice: 5980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '로투스비스킷312.5G', unitPrice: 2980, itemAmount: 2, taxFree: false });
+        itemArray.push({ name: '풀무원 치즈&치즈', unitPrice: 4700, itemAmount: 5, taxFree: true });
+        itemArray.push({ name: '극세사화장실용 수세미', unitPrice: 990, itemAmount: 2, taxFree: false });
+        itemArray.push({ name: '바나나요구르트 순한맛', unitPrice: 1440, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '풀무원샘물250ml*4', unitPrice: 4250, itemAmount: 20, taxFree: true });
+        itemArray.push({ name: '바른생각 휴지한박스', unitPrice: 2750, itemAmount: 2, taxFree: false });
+        itemArray.push({ name: '냉동블루베리1.13kg', unitPrice: 4980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '소프트옥수수식빵', unitPrice: 2280, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '허니씨솔트호두150g', unitPrice: 2980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: 'LH망사스펀지수세미2p', unitPrice: 4980, itemAmount: 100, taxFree: false });
+        itemArray.push({ name: '베이비오갈아넣은체리', unitPrice: 9000, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '롯데몽쉘36입(크+카)', unitPrice: 8780, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '스니커즈 미니어쳐 1', unitPrice: 14680, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '미니 담라 소프트캔디', unitPrice: 11980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '키도 크리미버터 13입', unitPrice: 12980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '토마스멀티비타민500', unitPrice: 10980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '미니 멘토스 뉴레인', unitPrice: 14980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '엠바레 캐러멀', unitPrice: 9980, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '하리보 골드베렌 젤리', unitPrice: 5480, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '젤리스트로우 대용량', unitPrice: 9900, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '이탈리안샐러드대용량', unitPrice: 10000000, itemAmount: 1, taxFree: false });
+        itemArray.push({ name: '이탈리안샐러드대용량', unitPrice: 100000000, itemAmount: 1, taxFree: false });
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        const itemTotalSum = itemArray.reduce(function (prev, next) {
+            return prev + next.unitPrice * next.itemAmount;
+        }, 0);
+
+        const taxItemTotalSum = itemArray.reduce(function (prev, next) {
+            if (!next.taxFree) {
+                return prev + next.unitPrice * next.itemAmount;
+            } else {
+                return prev;
+            }
+        }, 0);
+
+        const preTaxItemTotalSum = Math.floor(taxItemTotalSum / 110 * 100);
+        const tax = taxItemTotalSum - preTaxItemTotalSum;
+        const taxFreeItemTotalSum = itemTotalSum - taxItemTotalSum;
+
+        console.log(itemTotalSum);
+        console.log(taxItemTotalSum);
+        console.log(taxFreeItemTotalSum);
+
+
+        function pad(n, width) {
+            n = n + '';
+            return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;
+        }
+
+        Date.prototype.format = function (f) {
+
+            if (!this.valueOf()) return " ";
+
+
+
+            var weekKorName = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+
+            var weekKorShortName = ["일", "월", "화", "수", "목", "금", "토"];
+
+            var weekEngName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+            var weekEngShortName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+            var d = this;
+
+
+
+            return f.replace(/(yyyy|yy|MM|dd|KS|KL|ES|EL|HH|hh|mm|ss|a\/p)/gi, function ($1) {
+
+                switch ($1) {
+
+                    case "yyyy": return d.getFullYear(); // 년 (4자리)
+
+                    case "yy": return (d.getFullYear() % 1000).zf(2); // 년 (2자리)
+
+                    case "MM": return (d.getMonth() + 1).zf(2); // 월 (2자리)
+
+                    case "dd": return d.getDate().zf(2); // 일 (2자리)
+
+                    case "KS": return weekKorShortName[d.getDay()]; // 요일 (짧은 한글)
+
+                    case "KL": return weekKorName[d.getDay()]; // 요일 (긴 한글)
+
+                    case "ES": return weekEngShortName[d.getDay()]; // 요일 (짧은 영어)
+
+                    case "EL": return weekEngName[d.getDay()]; // 요일 (긴 영어)
+
+                    case "HH": return d.getHours().zf(2); // 시간 (24시간 기준, 2자리)
+
+                    case "hh": return ((h = d.getHours() % 12) ? h : 12).zf(2); // 시간 (12시간 기준, 2자리)
+
+                    case "mm": return d.getMinutes().zf(2); // 분 (2자리)
+
+                    case "ss": return d.getSeconds().zf(2); // 초 (2자리)
+
+                    case "a/p": return d.getHours() < 12 ? "오전" : "오후"; // 오전/오후 구분
+
+                    default: return $1;
+
+                }
+
+            });
+
+        };
+
+        String.prototype.string = function (len) { var s = '', i = 0; while (i++ < len) { s += this; } return s; };
+
+        String.prototype.zf = function (len) { return "0".string(len - this.length) + this; };
+
+        Number.prototype.zf = function (len) { return this.toString().zf(len); };
+
+        var _today = new Date();
+
+
+    </script>
+</head>
+
+<body>
+    <div style="margin-top: 5px;">
+        <div id="logo">
+            emart
+        </div>
+        <div id="store_info">
+            이마트 죽전점 (031)888-1234<br>
+            206-86-50913 이갑수<br>
+            용인시 수지구 포은대로
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+        영수증 미지참시 교환/환불 불가(30일내)<br>
+        교환/환불 구매점에서 가능(결제카드지참)<br>
+        체크카드/신용카드 청구취소 반영은<br>
+        최대 3~5일 소요(주말, 공휴일제외)
+    </div>
+    <div style="margin-top: 5px;">
+        <div style="float: left;">
+            [구 매]
+        </div>
+        <div style="float: left; width: 120px;">
+            <script>
+                document.write(_today.format('yyyy-MM-dd HH:mm'));
+            </script>
+        </div>
+        <div style="float: left; width: 130px; text-align: right;">
+            POS: 0009-2418
+        </div>
+    </div>
+    <br>
+    <div>
+        <div style="width: 295px; overflow: hidden; white-space: nowrap; word-wrap: none;">
+            ------------------------------------------------------
+        </div>
+    </div>
+    <div>
+        <div style="float: left; width: 160px; text-align: left">
+            &nbsp&nbsp상품명
+        </div>
+        <div style="float: left; width: 30px; text-align: right">
+            단가
+        </div>
+        <div style="float: left; width: 40px; text-align: right">
+            수량
+        </div>
+        <div style="float: left; width: 64px; text-align: right">
+            금액
+        </div>
+    </div>
+    <br>
+    <div>
+        <div style="width: 295px; overflow: hidden; white-space: nowrap; word-wrap: overnone;">
+            ------------------------------------------------------
+        </div>
+    </div>
+    <div style="width: 294px;">
+        <script>
+            for (const key in itemArray) {
+                const index = pad((parseInt(key) + 1), 2);
+                //const element = itemArray[key].name;
+                if (!itemArray[key].taxFree) {
+                    document.write(
+                        "<div style='display: inline-block; width: 15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding: 0px'>" + index + "</div>"
+                        + "<div style='display: inline-block; width: 15px; overflow:hidden; text-overflow:ellipsis;white-space:nowrap; padding: 0px'>&nbsp</div>"
+                        + "<div style='display: inline-block; width: 100px; overflow:hidden; text-overflow:ellipsis;white-space:nowrap; padding: 0px'>" + itemArray[key].name + "</div>"
+                        + "<div style='display: inline-block; width: 60px; overflow:hidden; text-overflow:ellipsis;white-space:nowrap; text-align: right; padding: 0px'>" + numberWithCommas(itemArray[key].unitPrice) + "</div>"
+                        + "<div style='display: inline-block; width: 30px;overflow:hidden; text-overflow:ellipsis;white-space:nowrap; text-align: right; padding: 0px'>" + itemArray[key].itemAmount + "</div>"
+                        + "<div style='display: inline-block; width: 74px; overflow:hidden; text-overflow:ellipsis;white-space:nowrap; text-align: right; padding: 0px'>" + numberWithCommas((itemArray[key].unitPrice * itemArray[key].itemAmount)) + "</div>"
+                    )
+                } else {
+                    document.write(
+                        "<div style='display: inline-block; width: 15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding: 0px'>" + index + "</div>"
+                        + "<div style='display: inline-block; width: 15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding: 0px'>*</div>"
+                        + "<div style='display: inline-block; width: 100px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding: 0px'>" + itemArray[key].name + "</div>"
+                        + "<div style='display: inline-block; width: 60px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align: right; padding: 0px'>" + numberWithCommas(itemArray[key].unitPrice) + "</div>"
+                        + "<div style='display: inline-block; width: 30px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align: right; padding: 0px'>" + itemArray[key].itemAmount + "</div>"
+                        + "<div style='display: inline-block; width: 74px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align: right; padding: 0px'>" + numberWithCommas((itemArray[key].unitPrice * itemArray[key].itemAmount)) + "</div>"
+                    )
+                }
+            }
+        </script>
+    </div>
+    <div>
+        <div style="float: left; width: 157px; text-align: right;">
+            (*)면 세&nbsp&nbsp물 품
+        </div>
+        <div style="float: left; text-align: right; width: 137px">
+            <script>
+                document.write(numberWithCommas(taxFreeItemTotalSum));
+            </script>
+        </div>
+        <br>
+        <div style="float: left; width: 157px; text-align: right;">
+            과 세&nbsp&nbsp물 품
+        </div>
+        <div style="float: left; text-align: right; width: 137px">
+            <script>
+                document.write(numberWithCommas(preTaxItemTotalSum));
+            </script>
+        </div>
+        <br>
+        <div style="float: left; width: 154px; text-align: right;">
+            부&nbsp&nbsp가&nbsp&nbsp&nbsp세
+        </div>
+        <div style="float: left; text-align: right; width: 140px">
+            <script>
+                document.write(numberWithCommas(tax));
+            </script>
+        </div>
+        <br>
+        <div style="float: left; width: 153px; text-align: right;">
+            합&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp계
+        </div>
+        <div style="float: left; text-align: right; width: 141px">
+            <script>
+                document.write(numberWithCommas(itemTotalSum));
+            </script>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div style="float: left; width: 120px">
+            결 제 대 상 금 액
+        </div>
+        <div style="float: left; width: 174px; text-align: right;">
+            <script>
+                document.write(numberWithCommas(itemTotalSum));
+            </script>
+        </div>
+        <br>
+    </div>
+    <div>
+        <div style="width: 295px; overflow: hidden; white-space: nowrap; word-wrap: none;">
+            ------------------------------------------------------
+        </div>
+    </div>
+    <div>
+        <div style="float: left; width: 100px">
+            0024 하나
+        </div>
+        <div style="float: left; width: 194px; text-align: right;">
+            5417**8890/07850246
+        </div>
+    </div>
+    <br>
+    <div>
+        <div style="float: left; width: 100px">
+            카드결제
+        </div>
+        <div style="float: left; width: 194px; text-align: right;">
+            <script>
+                document.write("일시불 / " + numberWithCommas(itemTotalSum));
+            </script>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div style="width: 295px; overflow: hidden; white-space: nowrap; word-wrap: none;">
+            ------------------------------------------------------
+        </div>
+    </div>
+    <div>
+        조*근 고객님의 포인트 현황입니다.
+    </div>
+
+</body>
+
+</html>

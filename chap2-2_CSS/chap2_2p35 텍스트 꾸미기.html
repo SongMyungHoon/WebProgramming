@@ -1,0 +1,45 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>텍스트 꾸미기</title>
+    <style> /* CSS 스타일 시트 작성 */
+        h3 {  /* type selector */
+            text-align: right; } /* 글자 오른쪽 정렬 */
+
+        span {  /* type selector */
+            text-decoration: line-through; } /* 글자에 취소선 처리 */
+
+        strong {  /* type selector */
+            /* 윗줄 */
+            text-decoration: overline; }
+
+        .p1 { /* class selector */
+            text-indent: 3em; /* 3 글자 들여쓰기 */
+            text-align: justify; } /* 글자 양쪽 정렬 */
+
+        .p2 { /* class selector */
+            text-indent: 1em; /* 1글자 들여쓰기 */
+            text-align: center; } /* 글자 중앙 정렬 */
+    </style>
+</head>
+
+<body>
+    <h3>텍스트 꾸미기</h3> <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <!--p tag의 class=p1으로 지정해, 미리 설정한 p1 style 적용-->
+    <p class="p1">HTML의 태그만으로 기존의 워드 프로세서와 같이
+        들여쓰기, 정렬, 공백, 간격 등과 세밀한 
+        <span>텍스트 제어</span>를 할 수 없다.
+    </p>
+    <!--p tag의 class=p2으로 지정해, 미리 설정한 p1 style 적용-->
+    <p class="p2">그러나, <strong>스타일 시트</strong>는
+        이를 가능하게 한다. 들여쓰기, 정렬에 대해서 알아본다.
+    </p>
+</body>
+
+</html>

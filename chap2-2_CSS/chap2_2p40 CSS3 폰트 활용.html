@@ -1,0 +1,45 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>폰트</title>
+    <style> /* CSS 스타일 시트 작성 */
+        body { /* type selector */
+            /* body부분 글꼴: "Times New Roman" 설정, 
+               Times New Roman이 없다면 Serif 사용 */
+            font-family: "Times New Roman", Serif;
+            /* 글자 크기: large로 설정 */
+            font-size: large; }
+
+        /* <h3> tag 사용 시 style 설정
+            이텔릭, 볼드체, 40px, consolas, consolas 없으면 sans-serif */
+        h3 { /* type selector */
+            font: italic bold 40px consolas, sans-serif; }
+    </style>
+</head>
+
+<body>
+    <!--크기 3의 표제 설정-->
+    <h3>Consolas font</h3>
+    <!--입체 선 긋기-->
+    <hr>
+    <!--해당 p tag의 style overriding: font-weight:900-->
+    <p style="font-weight:900">font-weight 900</p>
+    <!--해당 p tag의 style overriding: font-weight:100-->
+    <p style="font-weight:100">font-weight 100</p>
+    <!--해당 p tag의 style overriding: font-style:italic-->
+    <p style="font-style:italic">Italic Style</p>
+    <!--해당 p tag의 style overriding: font-style:oblique-->
+    <p style="font-style:oblique">Oblique Style</p>
+    <p> 현재 크기의
+        <!--<span> HTML 문서에서 inline-element를 하나로 묶을 때 사용
+            (element grouping)-->
+        <!--span tag 내 글자 크기 1.5배로 증가 -->
+        <span style="font-size:1.5em">1.5배</span>크기로</p>
+</body>
+
+</html>

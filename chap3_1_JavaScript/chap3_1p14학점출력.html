@@ -1,0 +1,31 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<html> <!--HTML 언어로 작성되어 있음-->
+<head> <!--글의 머릿말-->
+    <meta charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <!--title bar에 새겨질 글자 정의-->
+    <title>Slide14.기본 지식-연산, 조건식</title>
+    <script>
+        function hackjum() { /* hackjum 함수 선언 */
+            /* 지역변수 score 선언, prompt 함수로 입력받는 값을 score 값에 저장*/
+            score = prompt("Enter Score"); 
+            if (score >= 90) { /* score가 90점 이상이라면 */
+                document.write("학점:A");  /* 학점:A 출력 */
+            } else if (score < 90 && score >= 80) { /* score가 80점 이상, 90점 미만이라면 */
+                document.write("학점:B"); /* 학점:B 출력 */
+            } else if (score < 80 && score >= 70) { /* score가 70점 이상, 80점 미만이라면 */
+                document.write("학점:C"); /* 학점:C 출력 */
+            } else if (score < 70 && score >= 60) { /* score가 60점 이상, 70점 미만이라면 */
+                document.write("학점:D"); /* 학점:D 출력 */
+            } else { /* score가 60점 미만이라면 */
+                document.write("학점:F"); /* 학점:F 출력 */
+            }
+        } /* FUNCTION hackjum END */
+    </script> <!--SCRIPT END-->
+</head> <!--HEAD END-->
+
+<body>
+    <script>
+        hackjum(); // hackjum fucntion 호출
+    </script> <!--SCRIPT END-->
+</BODY> <!--BODY END-->
+</HTML> <!--HTML END-->

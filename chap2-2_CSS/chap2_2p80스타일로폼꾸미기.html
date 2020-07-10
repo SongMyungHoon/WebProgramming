@@ -1,0 +1,61 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<html><!--HTML 언어로 작성되어 있음-->
+<head> <!--글의 머릿말-->
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>폼 스타일주기</title>
+    <style> /* CSS 스타일 시트 작성 */
+        /* input을 텍스트로 받는다. 색깔은 빨간색 */
+        input[type=text] { /* type selector */
+            /* text창에만 적용 */
+            color: red; }
+         /* type selector 
+            input, textarea에 마우스 올렸을 때 적용*/
+        input:hover, textarea:hover {
+            /* 배경색: acliceblue */
+            background: aliceblue; }
+
+        /* text를 클릭하면 크기가 120% 로 확대 */
+        input[type=text]:focus,
+        input [type=email]:focus {  /* type selector */
+            font-size: 120%; }
+
+        label {  /* type selector */
+            display: block;
+            /* 새 라인에서 시작 */
+            padding: 10px; }
+
+        /* Descendent Selector */
+        label span { /*label 하위 모든 span tag에 적용*/
+            float: left;
+            width: 90px;
+            text-align: right;
+            padding: 10px; }
+    </style>
+</head>
+
+<body>
+    <h3>CONTACT US</h3> <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <form><!--폼 설정-->
+        <!--label은 폼의 양식에 이름 붙이는 태그이다.
+            span tag: 양식의 제목에 해당
+            input style 적용
+            placeholder:양식에 예시 문구 추가-->
+        <label>
+            <span>Name</span> <input type="text" placeholder="Elvis"><br>
+        </label>
+        <label>
+            <span>Email</span><input type="email" placeholder="elvis@graceland.com">
+        </label>
+        <label>
+            <span>Comment</span><textarea placeholder="메시지를 남겨주세요"></textarea>
+        </label>
+        <label>
+            <span></span> <input type="submit" value="submit">
+        </label>
+    </form>
+</body>
+
+</html>

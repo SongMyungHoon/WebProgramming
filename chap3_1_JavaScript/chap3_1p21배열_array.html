@@ -1,0 +1,39 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<HTML> <!--HTML 언어로 작성되어 있음-->
+<HEAD> <!--글의 머릿말-->
+    <META charset="utf-8"> <!--encoding type utf-8로 설정-->
+<title>Slide21. 배열 - Array</title> <!--title bar에 새겨질 글자 정의-->
+<script>
+    function call1() { /* call1 함수 선언 */
+        // "빨간색", 1010, "deadfire", "JavaScript", "XX"를 element로 하는 Array 선언
+        var arr = new Array("빨간색", 1010, "deadfire", "JavaScript", "XX");
+        document.write("<H2>Original</H2>"); // 글자 크기 2의 표제 정의
+        for (i = 0; i < arr.length; i++) { // Array의 인수만큼 for loop 반복
+            document.write("arr[" + i + "]: " + arr[i] + "<BR>");
+        } // FOR LOOP END
+
+        arr.sort(); // array 정렬
+        document.write("<HR><H2>기본정렬</H2>"); // 선 긋고 선 밑에 글자 크기 2의 표제 정의
+        for (i = 0; i < arr.length; i++) {
+            document.write("arr[" + i + "]: " + arr[i] + "<BR>");
+        } // FOR LOOP END
+
+        function compare(a, b) { // sort에 사용할 compare 함수 정의
+            if (a < b) return 1;        // a가 b보다 크면 양수 -> b 큰 순서대로
+            else if (a > b) return -1;  // -> a 역순 정렬
+            else return 0;
+        } // function compare end
+
+        arr.sort(compare); // 역순정렬에 compare 함수 사용
+        document.write("<HR><H2>역순정렬</H2>"); // 선 긋고 선 밑에 글자 크기 2의 표제 정의
+        for (i = 0; i < arr.length; i++) {      // 역순 정렬 결과 출력
+            document.write("arr[" + i + "]: " + arr[i] + "<BR>");
+        } // FOR LOOP END
+    }
+</script> <!--SCRIPT END-->
+
+<body>
+    <script>call1();</script> <!--cal11 함수 호출-->
+</body> <!--BODY END-->
+
+</html> <!--HTML END-->

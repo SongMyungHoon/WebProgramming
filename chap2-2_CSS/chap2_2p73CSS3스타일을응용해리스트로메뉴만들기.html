@@ -1,0 +1,60 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>리스트로 메뉴 만들기</title>
+    <style> /* CSS 스타일 시트 작성 */
+        /* id selector */
+        #menubar { /* background color: olive */
+            background: olive; }
+
+        /* Descendent Selector */
+        #menubar ul { /* menubar 아래 모든 ul에 적용 */
+            /* 여백과 패딩 모두 0 지정 */
+            margin: 0;
+            padding: 0;
+            width: 567px;
+            /* 모든 <li> 한 줄에 담을 수 있는 폭 */ }
+
+        /* Descendent Selector */
+        #menubar ul li { /* menubar 아래 모든 ul 아래 li에 적용 */
+            display: inline; /* display:inline 설정 */
+            list-style-type: none;
+            padding: 0px 15px;
+            /* top=bottom=0, left=right=15px */ }
+
+        /* Descendent Selector */
+        #menubar ul li a { /* menubar 아래 모든 ul 아래 li 아래의 a에 적용 */
+            color: white;
+            text-decoration: none }
+
+        /* hover은 마우스를 올렸을 때의 경우에 해당 */
+        #menubar ul li a:hover {
+             /* menubar 아래 모든 ul 아래 li 아래의 a에 적용 */
+            color: violet; }
+    </style>
+</head>
+
+<body>
+    <!--<nav>: navigation link의 줄임, 
+        다른 페이지 또는 현재 페이지의 다른 부분과 연결되는 
+        navigation link들의 집합을 정의할 때 사용
+        id=menubar style 적용-->
+    <nav id="menubar">
+        <!--descendent selector menubar ul 적용-->
+        <ul>
+            <!--descendent selector menubar ul li 적용-->
+            <li> <a href="#">Home</a></li>
+            <li><a href="Espresso.html">Espresso</a></li>
+            <li><a href="#">Cappuccino</a></li>
+            <li><a href="#">Cafe Latte</a></li>
+            <li><a href="#">F.A.Q</a></li>
+        </ul>
+    </nav>
+</body>
+
+</html>

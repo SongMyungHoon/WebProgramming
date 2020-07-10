@@ -1,0 +1,45 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<html> <!--HTML 언어로 작성되어 있음-->
+<head> <!--글의 머릿말-->
+<meta charset="utf-8"> <!--encoding type utf-8로 설정-->
+<title>Slide19. 기본 지식 - Object2</title> <!--title bar에 새겨질 글자 정의-->
+<script>
+    function call1() { /* call1 함수 선언 */
+        /* (key: poly1, value: 10), (key: poly2, value: 6), (key: poly3, value: 80)
+           을 data로 하는 grades1 array 선언 */
+        var grades1 = { 'poly1': 10, 'poly2': 6, 'poly3': 80 };
+        var grades2 = {}; // grades2 array 선언
+        grades2['poly1'] = 10;  // grades2에 key: poly1, value: 10을 element로 넣는다.
+        grades2['poly2'] = 6;   // grades2에 key: poly2, value: 8을 element로 넣는다.
+        grades2['poly3'] = 80;  // grades3에 key: poly3, value: 80을 element로 넣는다.
+
+        var grades3 = new Object(); // grades3 Object 생성
+        grades3['poly1'] = 10;  // grades3에 key: poly1, value: 10을 element로 넣는다.
+        grades3['poly2'] = 6;   // grades3에 key: poly2, value: 6을 element로 넣는다.
+        grades3['poly3'] = 80;  // grades3에 key: poly3, value: 80을 element로 넣는다.
+        // 웹 브라우저의 개발자 모드의 console에 grades1['poly1']의 value 10 출력
+        console.log(grades1['poly1']); 
+        for (key in grades1) { // grades1의 모든 key에 대해
+            // key와 해당 key에 대한 grades1의 value 출력
+            document.write("key : " + key + " value : " + grades1[key] + "<br>");
+        }   // for loop END
+        var grades4 = { // grades4 변수 선언
+            /* grades4의 값에 key: poly1, value: 10,
+               key: poly2, value: 6
+               key: poly3, value: 80 을 element로 넣는다. */
+            'list': { 'poly1': 10, 'poly2': 6, 'poly3': 80 },
+            'show': function () { // grades4에서 function show를 선언
+                for (var name in this.list) { // grades4의 list의 모든 name에 대해
+                    // name과 name에 대응하는 list의 value를 출력
+                    document.write(name + ":" + this.list[name] + "<br>");
+                }   // for loop END
+            } // FUNCTION show END
+        } // grades4 END
+    }   // call1 END
+</script> <!--SCRIPT END-->
+
+<body>
+    <script>call1();</script> <!--call1 호출-->
+    <script>call1().grades4.show;</script> <!--call1의 grades4의 show fucntion 호출-->
+</BODY> <!--BODY END-->
+</HTML> <!--HTML END-->

@@ -1,0 +1,54 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>z-index 프로퍼티</title>
+    <style>
+        div { /* type selector */
+            /* 절대 위치 지정 */
+            position: absolute; }
+
+        img { /* type selector */
+            /* 절대 위치 지정 */
+            position: absolute; }
+        /* 이하 id selector */
+        #spadeA { 
+            z-index: -3; 
+            left: 10px;
+            top: 20px; }
+
+        #spade2 {
+            z-index: 2;
+            left: 40px;
+            top: 30px; }
+
+        #spade3 {
+            z-index: 3;
+            left: 80px;
+            top: 40px; }
+
+        #spade7 {
+            z-index: 7;
+            left: 120px;
+            top: 50px; }
+    </style>
+</head>
+
+<body>
+    <h3>z-index 프로퍼티</h3>  <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <div>
+        <!--각각의 id에 해당하는 style 적용,
+            불러오는 이미지 파일 이름 spade*.png-->
+        <img id="spadeA" src="spadeA.png" width="100" height="140" alt="스페이드A">
+        <img id="spade2" src="spade2.png" width="100" height="140" alt="스페이드2">
+        <img id="spade3" src="spade3.png" width="100" height="140" alt="스페이드3">
+        <img id="spade7" src="spade7.png" width="100" height="140" alt="스페이드7">
+    </div>
+</body>
+
+</html>

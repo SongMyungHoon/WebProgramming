@@ -1,0 +1,19 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<HTML> <!--HTML 언어로 작성되어 있음-->
+<HEAD> <!--글의 머릿말-->
+    <META charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <SCRIPT LANGUAGE="JavaScript"> // script 언어 JavaScript 지정
+        // test
+        document.write("Hello, World!"); // 브라우저에 Hello, World 출력
+        doc = open("","output"); // output을 이름으로 하는 새 창 생성
+        // 새로 생성한 창에 크기 1의 표제 정의
+        doc.document.write("<BODY><H1>Hello!</H1>");
+        doc.document.write("</BODY>"); // BODY END TAG
+        doc.document.close(); // document 객체 close
+    </SCRIPT> <!--SCRIPT END-->
+</HEAD> <!--HEAD END-->
+
+<BODY>
+    TEST Document
+</BODY> <!--BODY END-->
+</HTML> <!--HTML END-->

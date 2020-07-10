@@ -1,0 +1,192 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<html> <!--HTML 언어로 작성되어 있음-->
+<head> <!--글의 머릿말-->
+    <meta charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <script>
+        // 물품 이름 정보를 갖는 array
+        var itemName = ["이맛쌀 20kg","초코파이","바나나우유","건포도","오렌지주스"			    // 5
+            ,"초코에몽","새꼬막살 250g","샐러드로 건강하게 한 끼 식사","허니버터아몬드 210g"     // 4
+            ,"당찬 사과4~7입/봉","국내산삼겹살구이용100g","블랙앵거스초이스윗등심살 100g"		 // 3
+            ,"니베아 선 프로텍트 앤 라이트 선 세럼 90ml","버터와플 316g","쵸코하임18개입284g"	 // 3
+            ,"팔도비빔면 4입기획","진비빔면156g*4","노브랜드 파인애플 슬라이스 850g"			 // 3
+            ,"입판란 (30개입/특란)","국내산 칼집 삼겹살 100g", "노브랜드 냉동 닭가슴살 1kg"		 // 3
+            ,"국내산돈앞다리불고기(100g)","국내산돈등심카레용 100g(소팩)","깨끗한 물티슈 100매"   // 3
+            ,"3겹 화장지30m30롤","구르 키친타올 230매*4입","템포 레귤러 20P"					// 3
+            ,"유한락스 레귤러 3.5L","다우니 고농축 섬유유연제 엑스퍼트 2L","LG생활건강 테크 울드라이 1.3L 리필"];
+        // 물품 단가 정보를 갖는 array
+        var price = [10000000,100000,2500,3300,25000,100,6980,3980,1000,7980
+            ,2380,2600,6900,3280,3280,2680,2780,2980,4990,2580
+            ,5980,1280,1280,800,7900,3980,9500,5930,10900,3900];
+        // 물품 수량 정보를 갖는 array
+        var quantity = [2,99,1,1,2,15,1,1,1,1
+                        ,1,1,1,1,1,1,1,1,1,1
+                        ,1,1,1,1,1,1,1,1,1,1];
+        // 물품의 면세 여부 정보를 갖는 array
+        var taxFree = [true,false,false,true,false,false,true,true,false,true
+                    ,true,true,false,false,false,false,false,false,true,true
+                    ,true,true,true,false,false,false,false,false,false,false];
+        var totalPrice = 0; // 전체 주문 금액
+        var taxFreeVal = 0; // 전체 면새액
+        
+        // 전체 주문 금액, 전체 면새액 계산
+        for(i = 0; i < itemName.length; i++) {
+            // totalPrice += 각 물품의 단가 * 각 물품의 수량
+            totalPrice += price[i] * quantity[i];
+            // 만약 해당 물품이 면세물품에 해당한다면,
+            if(taxFree[i]) {
+                // taxFreeVal += 해당 물품의 단가 * 해당 물품의 수량
+                taxFreeVal += price[i] * quantity[i];
+            }
+        }   // for loop end
+
+        var taxRate = parseFloat(10); // 부가세율 : 10 %
+        
+        /* 과세액 (= 세전금액) : 버림 처리
+            과세액 = 전체금액 - 면세금액, 부동 소수점 문제 클리어 */
+        var taxation = ((totalPrice - taxFreeVal) / (100 + taxRate)) * 100;
+        var iTaxation = parseInt(taxation);
+        
+        var tax = taxation * taxRate/100; // 부가세액 (항상 올림 처리)
+        var itax;   // 부가세액을 올림 처리하여 int 형 변수로 저장하기 위한 변수 선언
+        
+        /* 실수형 전체 환전 수수료 -> 정수로 형 변환 -> 다시 실수형으로 형변환 했을 때
+            원상 복귀가 된다는 것은 소수점 이하 숫자가 존재한다는 의미이다. */
+        if(tax != parseFloat(parseInt(tax))) {
+            iTax = parseInt(tax) + 1; // 소수점 이하 숫자가 있다면 올림 처리 해준다.
+        } else {    // 소수점 이하 숫자가 없다면 == 정수
+            iTax = parseInt(tax); // 정수형으로 형 변환
+        }
+
+        
+        
+        // 입력받은 x 값을 세자리수 간격으로 콤마를 찍어 출력한다.
+        function addComma(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+        var date = new Date();
+        // "YYYY-MM-dd hh:mm" format으로 Date를 출력한다
+        function printDate() {
+            var month = (date.getMonth() + 1); // month 1월 0부터 시작
+            // month가 10보다 작으면 앞에 0 붙여준다
+            month = month >= 10 ? month : '0' + month;
+            var day = date.getDate();
+            // day가 10보다 작으면 앞에 0 붙여준다
+            day = day >= 10 ? day : '0' + day;
+            var hour = date.getHours();
+            // hour가 10보다 작으면 앞에 0 붙여준다
+            hour = hour >= 10 ? hour : '0' + hour;
+            var min = date.getMinutes();
+            // min이 10보다 작으면 앞에 0 붙여준다
+            min = min >= 10 ? min : '0' + min;
+            document.write(date.getFullYear() + "-" +
+                            month + "-" + day + " " +
+                            hour + ":" + 
+                            min);
+        }
+        
+        // 입력 받은 num 값만큼 공백을 출력한다.
+        function printSpace(num) {
+            for(i = 0; i < num; i++) {
+                document.write("&nbsp");
+            }
+        } // printSpace function end
+        
+        // 입력 받은 num 값 만큼 hyphen을 출력한다.
+        function printHyphen(num) { 
+            for(i = 0; i < num; i++) {
+                document.write("-");
+            }
+        } // printHyphen function end
+        
+        // HEADER 부분 출력하는 함수
+        function printHeader() {
+            document.write("<table><tr>" + 
+            "<td rowspan='3'><img src=emart_logo.png width='100' height='50' vspace='10' hspace='10'></td>" + 
+            "<td>이마트 죽전점 (031)888-1234<br>" + 
+                "206-86-50913 이갑수<br>" +
+                "용인시 수지구 포은대로 552<br>" + 
+            "</td></tr><br>");
+            document.write("영수증 미지참시 교환/환불 불가(30일내)<br>");
+            document.write("교환/환불 구매점에서 가능(결제카드지참)<br>");
+            document.write("체크카드/신용카드 청구취소 반영은<br>");
+            document.write("최대 3~5일 소요 (주말,공휴일제외)<br>");
+            document.write("<tr>[구  매]");
+            printDate();
+            printSpace(13);
+            document.write("POS:0009-2418</tr><br>");
+            printHyphen(55);
+            document.write("<br><tr>");
+            printSpace(4);
+            document.write("상 품 명");
+            printSpace(14);
+            document.write("단 가")
+            printSpace(6);
+            document.write("수량");
+            printSpace(10);
+            document.write("금 액");
+        } // printHeader function end
+        function printBody() {
+            var id;
+            for(i = 0; i < itemName.length; i++) {
+                id = i + 1; // i는 0부터 시작하므로 물품의 id는 1부터 시작하게 설정
+                id = id >= 10 ? id : '0' + id; // id가 10 미만이라면 앞에 0을 붙임
+                if(taxFree[i]) {    // 면세 물품인 경우 id 뒤에 asterisk 붙임
+                    document.write("<div style='display: inline-block; width: 40px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding: 0px'>"
+                            + id + "*&nbsp</div>");
+                } else {            // 과세 물품은 asterisk 자리에 공백
+                    document.write("<div style='display: inline-block; width: 40px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; padding: 0px'>"
+                            + id + "&nbsp&nbsp</div>");
+                }
+                // id와 면세 여부 출력 후 물품 명, 단가, 개수, 총액 순서대로 출력하고 <br> 태그로 줄 바꿈 수행
+                document.write("<div style='display: inline-block; width: 130px; overflow:hidden; text-overflow:ellipsis;white-space:nowrap; padding: 0px'>" + itemName[i] + "</div>"
+                    + "<div style='display: inline-block; width: 80px; overflow:hidden; text-overflow:ellipsis;white-space:nowrap; text-align: right; padding: 0px'>" + addComma(price[i]) + "</div>"
+                    + "<div style='display: inline-block; width: 25px;overflow:hidden; text-overflow:ellipsis;white-space:nowrap; text-align: right; padding: 0px'>" + quantity[i] + "</div>"
+                    + "<div style='display: inline-block; width: 85px; overflow:hidden; text-overflow:ellipsis;white-space:nowrap; text-align: right; padding: 0px'>" + addComma((price[i] * quantity[i])) + "</div><br>"
+                );
+            }   // for loop end
+        }   // printBody function end
+        function printTail() {
+            printSpace(16); // 공백 16개 출력 후 "면 세 물 품" 문자열 출력 후 면세액 출력
+            document.write("<div style='display: inline-block; width: 110px; padding: 0px'>(*)면&nbsp세&nbsp&nbsp&nbsp물&nbsp품</div>"
+                    + "<div style='display: inline-block; width: 160px; padding: 0px; text-align:right;'>" + addComma(taxFreeVal) + "</div><br>");
+            printSpace(19); // 공백 19개 출력 후 "과 세 물 품" 문자열 출력 후 과세액 출력
+            document.write("<div style='display: inline-block; width: 100px; padding: 0px'>과&nbsp세&nbsp&nbsp&nbsp물&nbsp품</div>"
+                    + "<div style='display: inline-block; width: 153px; padding: 0px; text-align:right;'>" + addComma(iTaxation) + "</div><br>");
+            printSpace(19); // 공백 19개 출력 후 "부   가   세" 문자열 출력 후 부가세액 출력
+            document.write("<div style='display: inline-block; width: 100px; padding: 0px'>부&nbsp&nbsp&nbsp&nbsp가&nbsp&nbsp&nbsp&nbsp세</div>"
+                    + "<div style='display: inline-block; width: 153px; padding: 0px; text-align:right;'>" + addComma(iTax) + "</div><br>");
+            printSpace(19); // 공백 19개 출력 후 "합       계" 문자열 출력 후 전체 총액 출력
+            document.write("<div style='display: inline-block; width: 100px; padding: 0px'>합&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp계</div>"
+                    + "<div style='display: inline-block; width: 153px; padding: 0px; text-align:right;'>" + addComma(totalPrice) + "</div><br>");
+            // "결 제 대 상 금 액" 문자열 출력 후 전체 총액 출력
+            document.write("<div style='display: inline-block; width: 150px; padding: 0px'>결&nbsp제&nbsp대&nbsp상&nbsp금&nbsp액</div>"
+                    + "<div style='display: inline-block; width: 210px; padding: 0px; text-align:right;'>" + addComma(totalPrice) + "</div><br>");
+            // 구분선으로 hyphen 55개 출력
+            printHyphen(55);
+            // 결제 카드 정보 출력
+            document.write("<br><div style='display: inline-block; width: 150px; padding: 0px'>0024&nbsp하&nbsp&nbsp나</div>"
+                    + "<div style='display: inline-block; width: 210px; padding: 0px; text-align:right;'>5417**8890/07850246</div><br>");
+            // 결제 정보 출력
+            document.write("<div style='display: inline-block; width: 100px; padding: 0px'>카드결제</div>"
+                    + "<div style='display: inline-block; width: 260px; padding: 0px; text-align:right;'>일시불 / " + addComma(totalPrice) + "</div><br>");
+            printHyphen(55); // 구분선으로 hyphen 55개 출력
+            document.write("<br>송*훈 고객님의 포인트 현황입니다."); // 포인트 현황 출력
+        }
+    </script> <!--SCRIPT END-->
+</head> <!--HEAD END-->
+    
+<body>
+     <!--HEADER 부분 출력-->
+    <script>printHeader()</script>
+    <script>printHyphen(55);</script>
+    
+     <!--계산 물품 정보 출력-->
+        <script>printBody();</script>
+    
+     <!--결제 정보를 갖는 TAIL부분 출력-->
+        <script> printTail();</script>
+    
+    </table>
+</body> <!--BODY END-->
+</html> <!--HTML END-->

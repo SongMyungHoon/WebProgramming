@@ -1,0 +1,23 @@
+<!DOCTYPE html> <!--HTML5 문서임을 선언-->
+<html> <!--HTML 언어로 작성되어 있음-->
+<head> <!--글의 머릿말-->
+    <meta charset="utf-8"> <!--encoding type utf-8로 설정-->
+    <script>
+        var name = "Hello"; /* 전역 변수 name 선언 및 초기화*/
+        function call1() { /* call1함수 정의 */
+            var name = "World"; /* call1 함수 호출 시 name에 "World" 저장 */
+            document.write("지역: " + name); /* name이 지역 변수임을 출력 */
+        }
+        function call2() { /* call2함수 정의 */
+            /* 전역변수 name 그대로 출력*/
+            document.write("전역: " + name);
+        }
+    </script> <!--SCRIPT END-->
+</head> <!--HEAD END-->
+
+<body>
+    <script>call1();</script> <!--call1 함수 호출-->
+    <script>call2();</script> <!--call2 함수 호출-->
+    Good...
+</body> <!--BODY END-->
+</html> <!--HTML END-->

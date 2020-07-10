@@ -1,0 +1,39 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>고정 배치</title>
+    <style> /* CSS 스타일 시트 작성 */
+        #fixed { /* id selector */
+            /* id=donw의 경우, 사용자의 커서가 해당 요소에 올라가
+               있는 경우에 대해 설정 지정 
+               position: relative의 경우 left:20px이면 태그 안쪽 방향으로
+               20px 만큼 이동, 바깥쪽으로 이동하려면 -20px 설정해야함*/
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 100px;
+            padding: 5px;
+            background: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Merry Christmas!</h3> <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <p>예수님이 탄생하셨습니다.</p> <!--<p>: 줄바꿈과 동시에 한 줄 띈다-->
+    <div> <!--div style 적용-->
+        <!--img파일 불러오기, 높이와 너비, 이름 지정-->
+        <img src="christmastree.jpg" width="230" height="180" alt="크리스마스 트리">
+        <!--특정 p tag 내 글자의 위치 각각 적용-->
+        <div id="fixed">예수님이 탄생하셨습니다.
+        </div>
+</body>
+
+</html>

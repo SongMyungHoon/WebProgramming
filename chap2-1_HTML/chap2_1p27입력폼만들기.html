@@ -1,0 +1,73 @@
+<html><!--html start-->
+<head><!--head start-->
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+</head><!--head end-->
+<!--본문에 해당하는 부분-->
+<body><!--body start-->
+    <!--<FORM></FORM>:양식을 정의
+        <FORM METHOD="...">: 양식의 방법 정의-->
+    <FORM METHOD=POST name='fm'></FORM>
+        <!--TABLE border: 테이블 경계선 굵기를 지정,
+            width: 너비를 지정
+            cellspacing: 셀과 셀 사이의 여백
+            cellpadding: 셀과 경계산 사이의 여백-->
+        <TABLE WIDTH=650 border=1 cellspacing=0 cellpadding=5>
+            <tr><!--<TR><TD></TD><TR>:표 내부에 들어갈 형식 정의-->
+                <td><b>번호</b></td><!--<b>:볼드체-->
+                <!--<input: 사용자로부터 정볼르 받아들이는 용도로 사용되는 태그
+                    type=text, 입력형태 정의, 텍스트를 입력하는 창 생성
+                    name: 서버로 전달되는 이름, 사용자 임의 지정
+                    value: 입력 태그의 초기값, 사용자가 변경 가능
+                    randomly: 읽기 전용 필드(HTML5)
+                    size: 요소의 너비를 문자수 단위로 명시
+                    maxlength: input 요소에 입력할 수 있는 최대 문자수를 명시-->
+                <td><input type=text name=id size=70 maxlength=70 value=1 readonly>
+                </td>
+            </tr>
+            <tr><!--<TR><TD></TD><TR>:표 내부에 들어갈 형식 정의-->
+                <td><b>성별</b></td><!--<b>:볼드체-->
+                <td>
+                    <!--<select name=..>: 드롭다운 리스트의 이름 명시-->
+                    <select name=sex>
+                        <!--<option value: 해당 옵션이 선택될 때 서버로 제출되는 값-->
+                        <option value='M' selected>남자
+                        <option value='W'>여자
+                    </select> <!--select end-->
+                </td> <!--td end-->
+            </tr> <!--tr end-->
+            <tr><!--<TR><TD></TD><TR>:표 내부에 들어갈 형식 정의-->
+                <td><b>성명</b></td><!--<b>:볼드체-->
+                <!--<input: 사용자로부터 정볼르 받아들이는 용도로 사용되는 태그
+                    type=text, 입력형태 정의, 텍스트를 입력하는 창 생성
+                    name: 서버로 전달되는 이름, 사용자 임의 지정
+                    value: 입력 태그의 초기값, 사용자가 변경 가능
+                    size: 요소의 너비를 문자수 단위로 명시
+                    maxlength: input 요소에 입력할 수 있는 최대 문자수를 명시-->
+                <td><input type=text name=name size=70 maxlength=70 value='레이나'></td>
+            </tr> <!--tr end-->
+            <tr> <!--<TR><TD></TD><TR>:표 내부에 들어갈 형식 정의-->
+                <td><b>주소</b></td> <!--<b>:볼드체-->
+                <!--<input: 사용자로부터 정볼르 받아들이는 용도로 사용되는 태그
+                    type=text, 입력형태 정의, 텍스트를 입력하는 창 생성
+                    name: 서버로 전달되는 이름, 사용자 임의 지정
+                    value: 입력 태그의 초기값, 사용자가 변경 가능
+                    size: 요소의 너비를 문자수 단위로 명시
+                    maxlength: input 요소에 입력할 수 있는 최대 문자수를 명시-->
+                <td><input type=text name=addr size=70 maxlength=70 value='서울 어딘가 살고 있군'></td>
+            </tr>
+            <tr>
+                <td><b>전화번호</b></td> <!--<b>:볼드체-->
+                <!--<input: 사용자로부터 정볼르 받아들이는 용도로 사용되는 태그
+                    type=text, 입력형태 정의, 텍스트를 입력하는 창 생성
+                    name: 서버로 전달되는 이름, 사용자 임의 지정
+                    value: 입력 태그의 초기값, 사용자가 변경 가능
+                    size: 요소의 너비를 문자수 단위로 명시
+                    maxlength: input 요소에 입력할 수 있는 최대 문자수를 명시-->
+                <td><input type=text name=tel size=70 maxlength=70 value=''></td>
+            </tr> <!--TR END-->
+        </table> <!--TABLE END-->
+    </FORM> <!--FORM END-->
+</body> <!--BODY END-->
+<!--HTML END-->
+</html>

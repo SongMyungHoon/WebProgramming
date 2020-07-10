@@ -1,0 +1,73 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>셀렉터 만들기</title>
+    <style> /* CSS 스타일 시트 작성 */
+        /* 웹페이지의 모든 h3, li tag에 color: brown style 적용하는 
+           group type selector 생성 */
+        h3, li { color: brown; } 
+
+        div > div > strong { /* child selector */
+            /* div tag 안에 div tag 안의 strong tag를 지정(chile selector)
+               strong tag block에 background 색: yellow 지정 */
+            background: yellow; }
+
+        ul strong { /* Descendant selector (하위 선택자) */
+            /*ul 태그 하위 모든 strong tag의 글자색: dodgerblue 지정*/
+            color: dodgerblue; }
+
+        .warning { /* class selector */
+            /* class="warning"인 경우,
+               font color: red 지정 */
+            color: red; }
+
+        body.main { /* class selector */
+            /* body의 main 부분의
+               background color: aliceblue 지정 */
+            background: aliceblue; }
+
+        #list { /* id selector */
+            /* list tag의 id 속성="list"인 경우,
+               background color: mistyrose 지정 */
+            background: mistyrose; }
+
+        #list span { /* Descendant selector (하위 선택자) */
+            /* list 하위 모든 span tag의 글자색: forestgreen 지정 */
+            color: forestgreen; }
+
+        h3:first-letter {
+            /* h3태그의 첫번째 글자색: red 지정 */
+            color: red; }
+
+        li:hover {
+            /* <li> tag 부분에 마우스가 올라가면 해당 부분 색: yellowgreen 으로 
+               바뀌게끔 지정 */
+            background: yellowgreen; }
+    </style>
+</head>
+
+<body>
+    <h3>Web Programming</h3> <!--크기 3의 표제 설정-->
+    <hr> <!--입체 선 긋기-->
+    <div>
+        <!--div tag 내 strong tag에 background color: yellow 적용됨-->
+        <div>2학기<strong>학습 내용</strong>입니다.</div>
+        <!-- id 셀렉터로 id="list"를 넣어줘서 설정이 변경되도록한다. -->
+        <ul id="list">
+            <!-- list아래 span인 자손셀렉터를 이용하여 글자 색을 바꿔준다. -->
+            <li><span>HTML5</span></li>
+            <!-- ul태그의 자손셀렉터 strong으로 글자 색을 바꿔준다. -->
+            <li><strong>CSS</strong></li>
+            <!-- 그냥 li태그 -->
+            <li>JAVASCRIPT</li>
+        </ul>
+        <!-- div태그에 class셀렉터인 warning을 넣어 글자 색을 바꿔준다. -->
+        <div class="warning">60점 이하는 F</div>
+    </div>
+</body>
+</html>

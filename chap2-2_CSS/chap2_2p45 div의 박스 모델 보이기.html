@@ -1,0 +1,46 @@
+<!--HTML5 문서임을 선언-->
+<!DOCTYPE html>
+<html><!--HTML 언어로 작성되어 있음-->
+<!--글의 머릿말-->
+<head>
+    <!--encoding type utf-8로 설정-->
+    <meta charset="utf-8">
+    <!--title bar에 새겨질 글자 정의-->
+    <title>텍스트 꾸미기</title>
+    <!-- 스타일링하자! -->
+    <style> /* CSS 스타일 시트 작성 */
+        /* 기본 배경색을 바꾼다. */
+        body {/* type selector */
+            /* body부분 배경색: ghostwhite 설정 */
+            background: ghostwhite; }
+        /* <span> tag 사용 시 style 설정
+            배경색: deepskyblue 설정 */
+        span {
+            background: deepskyblue; }
+        /* class selector */
+        div.box { /*<div> tag 내 box 부분에 아래 style 적용 */
+            background: yellow; /* 배경색: yellow */
+            border-style: solid; /* 구분선 style: solid */
+            border-col: peru; /* 구분선 색상: peru */
+            /* margin으로 블록간 사이를 40px로 한다.
+            border width를 30px로 설정한다.
+            padding으로 블록 내의 간격을 20px로 설정한다. */
+            margin: 40px; /* block 간 여백: 40px*/
+            border-width: 30px;
+            padding: 20px; /* block 내 간격: 20px*/
+        }
+    </style>
+</head>
+
+<body>
+    <!--<div> Division의 약자, 웹사이트 레이아웃 만들 때 주로 사용
+        웹페이지에서 논리적 구분을 정의하는 태그이며, 각각의 블록을 알맞게
+        배치하고 CSS를 활용하여 스타일 적용 가능-->
+    <!--class를 box로 지정, 위에 미리 정의한 box의 style 적용-->
+    <div class="box">
+        <!--span 지정, span style 적용-->
+        <span>DIVDIVDIV</span>
+    </div>
+</body>
+
+</html>

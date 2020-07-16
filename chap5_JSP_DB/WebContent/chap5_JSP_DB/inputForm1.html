@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style> /* table style 지정 */
+           th, td {
+               border: 1px solid #444444;
+           }
+           #noneBorder {
+           		border-style: none;
+           }
+    </style>
+    <script>
+		function isContentsRegExp(string) {
+			var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
+			if(regExp.test(string)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+    	function input_check() {
+			if(document.insertForm.name.value.length == 0) {
+				window.alert("값을 입력해주세요!");
+				document.insertForm.name.focus();
+			} else if(isContentsRegExp(document.insertForm.name.value)) {
+				window.alert("이름에 특수문자가 포함되었습니다.");
+				document.insertForm.name.focus();
+			} else if(document.insertForm.studentId.value.length == 0) {
+				window.alert("값을 입력해주세요!");
+				document.insertForm.studentId.focus();
+			} else if(isContentsRegExp(document.insertForm.studentId.value)) {
+				window.alert("학번에 특수문자가 포함되었습니다.");
+				document.insertForm.studentId.focus();
+			} else if(document.insertForm.kor.value.length == 0) {
+				window.alert("값을 입력해주세요!");
+				document.insertForm.kor.focus();
+			} else if(isContentsRegExp(document.insertForm.kor.value)) {
+				window.alert("점수에는 특수문자를 입력할 수 없습니다..");
+				document.insertForm.kor.focus();
+			}  else if(document.insertForm.eng.value.length == 0) {
+				window.alert("값을 입력해주세요!");
+				document.insertForm.eng.focus();
+			} else if(isContentsRegExp(document.insertForm.kor.value)) {
+				window.alert("점수에는 특수문자를 입력할 수 없습니다..");
+				document.insertForm.eng.focus();
+			} else if(document.insertForm.mat.value.length == 0) {
+				window.alert("값을 입력해주세요!");
+				document.insertForm.mat.focus();
+			} else if(isContentsRegExp(document.insertForm.kor.value)) {
+				window.alert("점수에는 특수문자를 입력할 수 없습니다..");
+				document.insertForm.mat.focus();
+			} else {
+				return true;
+			}
+			return false;
+		}    
+    </script>
+</head>
+<body>
+	<h1>성적 입력 추가</h1>
+	<form name="insertForm" method="post" action="insertDB.jsp" OnSubmit="return input_check()">
+		<table width=285 id=noneBorder>
+			<tr id=noneBorder>
+				<td align= right id=noneBorder><input type=submit value="추가"></td>
+			</tr>
+		</table>
+		<p>
+		<table border="1" width="285">
+			<script>
+				var label= new Array("이름", "학번", "국어", "영어", "수학");
+				var labelName = new Array("name", "studentId", "kor", "eng", "mat");
+				for(var i = 0; i < label.length; i++) {
+					document.write("<tr>");
+					document.write("<td width=\"100\" align=\"center\">" + label[i] + "</td>");
+					document.write("<td width=\"185\" align=\"center\">");
+					if(i == 0) {
+						document.write("<input type=\"text\" name=\"" + labelName[i]);
+						document.write("\" />");
+					} else	if(i == 1){
+						document.write("자동 부여");
+					} else {
+						document.write("<input type=\"number\" min=0 max=100 name=\"" + labelName[i]);
+						document.write("\" />");
+					}
+					document.write("</td>");
+					document.write("</tr>");
+				}
+			</script>
+		</table>
+	</form>
+</body>
+</html>

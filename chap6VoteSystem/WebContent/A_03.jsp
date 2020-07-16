@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>후보등록-등록결과(삭제)</title>
+	<title>후보등록-등록결과(추가)</title>
 	<style>
 		.tapBox {
 			display: inline-block;
@@ -14,7 +14,6 @@
 			padding: 5px;
 			font-size:20px;
 		}
-		
 	</style>
 </head>
 <body>
@@ -25,8 +24,8 @@
 	</div>
 	<table>
 		<tr border="1px solid black" outline="1px">
-			<td width="500" align="center">후보등록 결과 : 후보가 삭제 되었습니다.</td>
-			
+			<br>
+			<td width="300" align="center">후보등록 결과 : 후보가 추가 되었습니다.</td>
 		</tr>
 	</table>
 </body>

@@ -42,10 +42,45 @@ public class VoteDao {
 			exception.printStackTrace();
 		}
 	}
-	
 	/* "R"ead
-	 * SELECT query를 수행하여 Table의 모든 record를 출력하는 method 
-	 * return: Student를 data object로 하는 List */
+	 * select query를 수행하는 method
+	 * parameter로 받는 id에 해당하는 후보자의 정보를 domain.Hubo 객체로 return */
+	public Hubo selectOne(int id) {
+		dbConnect(); // database Connection 생성
+		PreparedStatement preparedStatement;
+		ResultSet resultSet;
+		// SELECT query문 
+		String query = "select * from hubo_table where id = ?;";
+		Hubo hubo = null;
+		try {
+			if(connection != null) {
+				// id를 조건절에 대입해야하므로 PrepareStatment 사용
+				preparedStatement = connection.prepareStatement(query);
+				preparedStatement.setInt(1, id);
+				/* executeQuery: SELECT문만 실행 가능
+				 * return: ResultSet object */
+				resultSet = preparedStatement.executeQuery();
+				
+				while(resultSet.next()) {
+					// query 수행 결과 return 받은 ResultSet으로 Hubo instance 생성
+					hubo = new Hubo(resultSet.getInt("id"), 
+									resultSet.getString("name"));
+				}
+				// object closing part
+				preparedStatement.close();
+				resultSet.close();
+				connection.close();
+			} else {
+				System.out.println("Connection isNull");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return hubo;	// query 수행 결과 생성한 Hubo instance return
+	}
+	/* "R"ead
+	 * SELECT query를 수행하여 Hubo_table의 모든 record를 출력하는 method 
+	 * return: Hubo를 data object로 하는 List */
 	public List<Hubo> selectAllHubo() {
 		dbConnect();
 		Statement statement = null;
@@ -61,7 +96,8 @@ public class VoteDao {
 				resultSet = statement.executeQuery(query);
 				
 				while(resultSet.next()) {
-					huboList.add(new Hubo(resultSet.getInt("id"), resultSet.getString("name")));
+					huboList.add(new Hubo(resultSet.getInt("id"),
+										  resultSet.getString("name")));
 				}
 				// object closing part
 				statement.close();
@@ -92,8 +128,8 @@ public class VoteDao {
 	}
 	
 	/* "R"ead
-	 * SELECT query를 수행하여 Table의 모든 record를 출력하는 method 
-	 * return: Student를 data object로 하는 List */
+	 * SELECT query를 수행하여 tupyo_table의 모든 record의 수를 count
+	 * return: int totalVoteCount */
 	public int selectAllCountTupyo() {
 		dbConnect();
 		Statement statement = null;
@@ -140,15 +176,14 @@ public class VoteDao {
 	}
 	
 	/* "R"ead
-	 * SELECT query를 수행하여 Table의 모든 record를 출력하는 method 
-	 * return: Student를 data object로 하는 List */
+	 * SELECT query를 수행하여 특정 후보의 득표 수를 count
+	 * return: int voteCount */
 	public int selectOneCountTupyo(int id) {
 		dbConnect();
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		String query = "select count(*) from tupyo_table where id = ?;";
 		int voteCount = 0;
-		List<Tupyo> tupyoList = new ArrayList<>();
 		try {
 			if(connection != null) {
 				preparedStatement = connection.prepareStatement(query);
@@ -190,8 +225,7 @@ public class VoteDao {
 	}
 	
 	/* "U"pdate
-	 * data를 database에 insert하는 method 
-	 * query 수행 결과를 String으로 return */
+	 * 후보 정보를 받아서 Database에 후보 정보를 등록하는 insert query 수행 */
 	public boolean insertHubo(Hubo hubo) {
 		dbConnect(); // database Connection 생성
 		PreparedStatement preparedStatement = null;
@@ -233,7 +267,8 @@ public class VoteDao {
 		}
 		return true;
 	}
-	
+
+	// 특정 후보를 Database에서 삭제하는 query 수행
 	public boolean delete(int id) {
 		dbConnect(); // database Connection 생성
 		PreparedStatement preparedStatement = null;
@@ -276,8 +311,7 @@ public class VoteDao {
 	}
 	
 	/* "U"pdate
-	 * data를 database에 insert하는 method 
-	 * query 수행 결과를 String으로 return */
+	 * 투표 정보를 Database의 tupyo_table에 저장하는 insert query 수행 */
 	public boolean insertTupyo(Tupyo tupyo) {
 		dbConnect(); // database Connection 생성
 		PreparedStatement preparedStatement = null;
@@ -321,8 +355,7 @@ public class VoteDao {
 	}
 	
 	/* "R"ead
-	 * SELECT query를 수행하여 Table의 모든 record를 출력하는 method 
-	 * return: Student를 data object로 하는 List */
+	 * 특정 후보의 연령대 별 득표수를 조회하는 SELECT query 수행 */
 	public List<List<Integer>> selectTupyoCountEachAge(int id) {
 		dbConnect();
 		PreparedStatement preparedStatement = null;

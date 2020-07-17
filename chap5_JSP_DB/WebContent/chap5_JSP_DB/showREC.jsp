@@ -19,6 +19,7 @@
     	StudentService studentService = new StudentService();
    	%>
     <script>
+		// 특수 문자 확인 함수
 		function isSpecial(data) {
 			var pattern_spc = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
 			if(pattern_spc.test(data)) {
@@ -26,7 +27,7 @@
 			} else {
 				return false
 			}
-		}
+		} // 숫자 판별 함수
 		function isNumeric(data) {
 	    	var pattern_num = /[0-9]/;	// 숫자 
 	    	if(pattern_num.test(data)){
@@ -34,7 +35,7 @@
 	    	} else {
 	    		return false
 	    	}
-		}
+		} // selectForm의 validation check
 		function selectFormCheck() {
 			if(document.selectForm.studentId.value.length == 0) {
 				window.alert("값을 입력해주세요!");
@@ -46,7 +47,7 @@
 				return true;				
 			}
 			return false;
-		}
+		} // updateDelete form의 validation check
     	function updateDeleteCheck() {
         	// 이름 체크
        		if(document.updateDelete.name.value.length == 0 
@@ -106,7 +107,7 @@
 		<p style="display: inline">
 			<span>조회할 학번</span>
 			<span>
-				<input type="text" name="studentId" /> 			
+				<input type="number" name="studentId" /> 			
 			</span>
 			<span><input type="submit" value="조회" /></span>
 		</p><p>

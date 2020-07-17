@@ -7,7 +7,11 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!--bootstrap을 사용하기 위한 link-->
+	<link rel="stylesheet" 
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+		  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
+		  crossorigin="anonymous">
 	<title>후보등록-등록결과(추가)</title>
 	<style>
 		.tapBox {
@@ -19,14 +23,16 @@
 			font-size:20px;
 		}
 	</style>
-	<%
+	<%	// A_01.jsp에서 id, name을 key로 parameter인 기호번호, 후보명을 받아온다.
 		int id = Integer.parseInt(request.getParameter("id"));
 		String name = request.getParameter("name");
 		VoteService voteService = new VoteService();
+		// 등록할 후보 정보를 바탕으로 Hubo instance 생성
 		Hubo hubo = new Hubo(id, name);
 	%>
 </head>
 <body>
+	<!--메뉴 이동 부분-->
 	<div class="d-flex p-2">
 		<span>
 			<input type="button" class="tapBox" style="background-color:yellow;" value="후보등록"
@@ -40,6 +46,7 @@
 		</span>
 	</div>
 	<div class="d-flex pl-4">
+	<!--Hubo instance를 받아 DB에 신규 후보 정보를 등록하고 결과를 문자열로 반환받아 출력-->
 	<table>
 		<tr border="1px solid black" outline="1px">
 			<br>

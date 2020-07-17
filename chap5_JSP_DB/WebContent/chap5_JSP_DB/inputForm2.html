@@ -12,6 +12,15 @@
            }
     </style>
     <script>
+		function isSpecial(data) {
+			var pattern_regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
+			if(pattern_regExp.test(data)) {
+				return true;
+			} else {
+				document.write(false);
+				return false;
+			}
+		}
 	    function isNumeric(data) {
 	    	var pattern_num = /[0-9]/;	// 숫자 
 	    	if(pattern_num.test(data)){
@@ -23,6 +32,9 @@
     	function input_check() {
 			if(document.selectForm.studentId.value.length == 0) {
 				window.alert("값을 입력해주세요!");
+				document.selectForm.studentId.focus();
+			} else if(isSpacial(document.selectForm.studentId.value)) {
+				window.alert("학번에 특수문자가 포함되어 있습니다.");
 				document.selectForm.studentId.focus();
 			} else if(!isNumeric(document.selectForm.studentId.value)) {
 				window.alert("학번은 숫자만 입력 가능합니다.");
@@ -40,7 +52,7 @@
 		<p style="display: inline-block">
 			<span>조회할 학번</span>
 			<span>
-				<input type="text" name="studentId"/> 			
+				<input type="number" name="studentId"/> 			
 			</span>
 			<span><input type="submit" value="조회"></span>
 		</p>

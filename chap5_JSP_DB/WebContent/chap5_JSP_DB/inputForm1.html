@@ -12,7 +12,7 @@
            }
     </style>
     <script>
-		function isContentsRegExp(string) {
+		function isSpecial(string) {
 			var regExp = /[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/gi;
 			if(regExp.test(string)) {
 				return true;
@@ -20,36 +20,44 @@
 				return false;
 			}
 		}
+		function isNumeric(data) {
+	    	var pattern_num = /[0-9]/;	// 숫자 
+	    	if(pattern_num.test(data)){
+	    		return true
+	    	} else {
+	    		return false
+	    	}
+		}
     	function input_check() {
 			if(document.insertForm.name.value.length == 0) {
 				window.alert("값을 입력해주세요!");
 				document.insertForm.name.focus();
-			} else if(isContentsRegExp(document.insertForm.name.value)) {
+			} else if(isSpecial(document.insertForm.name.value)) {
 				window.alert("이름에 특수문자가 포함되었습니다.");
 				document.insertForm.name.focus();
 			} else if(document.insertForm.studentId.value.length == 0) {
 				window.alert("값을 입력해주세요!");
 				document.insertForm.studentId.focus();
-			} else if(isContentsRegExp(document.insertForm.studentId.value)) {
-				window.alert("학번에 특수문자가 포함되었습니다.");
+			} else if(!isNumeric(document.insertForm.studentId.value)) {
+				window.alert("학번은 숫자만 입력할 수 있습니다.");
 				document.insertForm.studentId.focus();
 			} else if(document.insertForm.kor.value.length == 0) {
 				window.alert("값을 입력해주세요!");
 				document.insertForm.kor.focus();
-			} else if(isContentsRegExp(document.insertForm.kor.value)) {
-				window.alert("점수에는 특수문자를 입력할 수 없습니다..");
+			} else if(!isNumeric(document.insertForm.kor.value)) {
+				window.alert("점수에는 숫자만 입력할 수 있습니다.");
 				document.insertForm.kor.focus();
 			}  else if(document.insertForm.eng.value.length == 0) {
 				window.alert("값을 입력해주세요!");
 				document.insertForm.eng.focus();
-			} else if(isContentsRegExp(document.insertForm.kor.value)) {
-				window.alert("점수에는 특수문자를 입력할 수 없습니다..");
+			} else if(!isNumeric(document.insertForm.kor.value)) {
+				window.alert("점수에는 숫자만 입력할 수 있습니다.");
 				document.insertForm.eng.focus();
 			} else if(document.insertForm.mat.value.length == 0) {
 				window.alert("값을 입력해주세요!");
 				document.insertForm.mat.focus();
-			} else if(isContentsRegExp(document.insertForm.kor.value)) {
-				window.alert("점수에는 특수문자를 입력할 수 없습니다..");
+			} else if(!isNumeric(document.insertForm.kor.value)) {
+				window.alert("점수에는 숫자만 입력할 수 있습니다.");
 				document.insertForm.mat.focus();
 			} else {
 				return true;

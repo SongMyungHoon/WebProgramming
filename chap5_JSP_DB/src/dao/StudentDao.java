@@ -280,7 +280,12 @@ public class StudentDao {
 		}
 		return student.getName() + "의 데이터 입력 완료";
 	}
-	
+
+	/**Student를 입력 받아 update query를 수행해
+	 * DB 내 record를 수정하는 method
+	 * @param student
+	 * @return SQL 실행이 실패 시 false, 성공 시 true return
+	 */
 	public boolean update(Student student) {
 		dbConnect(); // database Connection 생성
 		PreparedStatement preparedStatement = null;
@@ -370,7 +375,12 @@ public class StudentDao {
 		}
 		return "테이블 삭제 OK";
 	}
-	
+
+	/**Student를 입력 받아 delete query를 수행해
+	 * DB 내 record를 삭제하는 method
+	 * @param student
+	 * @return SQL 실행이 실패 시 false, 성공 시 true return
+	 */
 	public boolean delete(Student student) {
 		dbConnect(); // database Connection 생성
 		PreparedStatement preparedStatement = null;

@@ -152,8 +152,9 @@
              Documentation at: /docs/config/valve.html
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
-
-      <Context docBase="chap6VoteSystem" path="/chap6VoteSystem" reloadable="true" source="org.eclipse.jst.jee.server:chap6VoteSystem"/></Host>
+	    <Context docBase="chap6VoteSystem" path="/chap6VoteSystem" reloadable="true" source="org.eclipse.jst.jee.server:chap6VoteSystem"/>
+    	<Context docBase="chap7Board" path="/chap7Board" reloadable="true" source="org.eclipse.jst.jee.server:chap7Board"/>
+	  </Host>
     </Engine>
   </Service>
 </Server>

@@ -42,6 +42,7 @@
 			<tr>
 				<td width="600"></td>
 				<td><input type="button" value="목록" OnClick="location.href='gongji_list.jsp'"></td>
+				<!--gongji_update.jsp에 parameter: "key = postId" submit-->
 				<td><input type="button" value="수정" OnClick="location.href='gongji_update.jsp?key=<%=post.getId()%>'"></td>
 		</table>
 	</form>

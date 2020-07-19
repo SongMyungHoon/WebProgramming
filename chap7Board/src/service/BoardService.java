@@ -7,12 +7,12 @@ import java.util.*;
 public class BoardService {
 	private static BoardDao boardDao = BoardDao.getInstance();
 	
-	// R
+	// R: 특정 게시글을 Database에서 조회
 	public Post selectOne(int postId) {
 		return boardDao.selectOne(postId);
 	}
 	
-	// R
+	// R: Database 내 모든 데이터 조회
 	public List<Post> selectAll() {
 		return boardDao.selectAll();
 	}

@@ -20,6 +20,7 @@
 	<title>JSP 실습 : CRUD 게시판</title>
 	<%
 		BoardService boardService = new BoardService();
+		// DB 내 모든 post record 조회
 		List<Post> postList = boardService.selectAll();
 	%>
 </head>
@@ -32,7 +33,7 @@
 			<td class="borderingTD" width="500"><p align="center">제목</p></td>
 			<td class="borderingTD" width="100"><p align="center">등록일</p></td>
 		</tr>
-		<%
+		<%	// DB 내 모든 post에 대하여 반복 수행
 			for(Post post : postList) {
 				if(postList.size() > 0 && postList != null) {
 		%>

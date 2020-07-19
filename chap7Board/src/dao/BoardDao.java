@@ -249,7 +249,8 @@ public class BoardDao {
 		dbConnect();
 		Statement statement = null;
 		ResultSet resultSet = null;
-		String query = "select * from gongji;";
+		// id 기준 내림차순 정렬
+		String query = "select * from gongji order by id desc;";
 		
 		List<Post> postList = new ArrayList<>();
 		try {

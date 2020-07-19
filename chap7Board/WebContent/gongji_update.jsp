@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<SCRIPT LANGUAGE="JavaScript">
+		<!--submit을 분기하기 위한 function-->
 		function submitForm(mode) {
  			if(mode == "WRITE") {
 				updateForm.action = "gongji_write.jsp";
@@ -32,19 +33,29 @@
 		<table width="650" cellspacing="0" cellpadding="5">
 			<tr>
 				<td><b>번호</b></td>
-				<td><input type="text" name="id" size="70" maxlength="70" value="<%=post.getId() %>" readonly></td>
+				<td>
+					<input type="text" name="id" size="70" maxlength="70" value="<%=post.getId() %>" readonly>
+				</td>
 			</tr>
 			<tr>
 				<td><b>제목</b></td>
-				<td><input type="text" name="title" size="70" maxlength="70" value="<%=post.getTitle()%>"></td>
+				<td>
+					<input type="text" name="title" size="70" maxlength="70" value="<%=post.getTitle()%>">
+				</td>
 			</tr>
 			<tr>
 				<td><b>일자</b></td>
-				<td><%=post.getDate().toLocalDate() %></td>
+				<td>
+					<%=post.getDate().toLocalDate() %>
+				</td>
 			</tr>
 			<tr>
 				<td><b>내용</b></td>
-				<td><textarea style="width: 500px; height: 250px;" name="content" cols="70" row="600"><%=post.getContent() %></textarea></td>
+				<td>
+					<textarea style="width: 500px; height: 250px;" name="content" cols="70" row="600">
+						<%=post.getContent() %>
+					</textarea>
+				</td>
 			</tr>
 		</table>
 		<table width="650">

@@ -14,6 +14,7 @@
 		  crossorigin="anonymous">
 	<%
 		BoardService boardService = new BoardService();
+		// gongji_update.jsp에서 key: id로 post의 id 값을 parameter로 받아온다.
 		int postId = Integer.parseInt(request.getParameter("id"));
 	%>
 </head>

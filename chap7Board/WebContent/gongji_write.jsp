@@ -14,17 +14,18 @@
 		  crossorigin="anonymous">
 	<%
 		BoardService boardService = new BoardService();
+		// gongji_insert.jsp에서 key로 받아온 parameter 값
 		String mode = request.getParameter("key") == null ? "null": request.getParameter("key");
 		Date date = Date.valueOf(LocalDate.now());
 		String resultState = "";
 		int postId = 0; // MySQL에서 auto_increment 옵션이 걸려 있으므로 insert에 사용되지 않는 값
 		
-		if(mode.equals("INSERT")) {
+		if(mode.equals("INSERT")) { // gongji_insert.jsp에서 요청받은 경우
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			Post insertedPost = new Post(postId, title, date, content);
 			resultState = boardService.insert(insertedPost);
-		} else {
+		} else {	// gongji_update.jsp에서 요청받은 경우
 			postId = Integer.parseInt(request.getParameter("id"));
 			String updatedTitle = request.getParameter("title");
 			String updatedContent = request.getParameter("content");

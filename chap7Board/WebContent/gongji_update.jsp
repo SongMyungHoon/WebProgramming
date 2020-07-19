@@ -8,9 +8,9 @@
 	<meta charset="UTF-8">
 	<SCRIPT LANGUAGE="JavaScript">
 		function submitForm(mode) {
- 			if(mode == "write") {
+ 			if(mode == "WRITE") {
 				updateForm.action = "gongji_write.jsp";
-			} else if(mode == "delete") {
+			} else if(mode == "DELETE") {
 				updateForm.action = "gongji_delete.jsp";
 			}
 			updateForm.submit();
@@ -51,8 +51,8 @@
 			<tr>
 				<td width="600"></td>
 				<td><input type="button" value="취소" OnClick="location.href='gongji_list.jsp'"></td>
-				<td><input type="button" value="쓰기" OnClick="submitForm('write')"></td>
-				<td><input type="button" value="삭제" OnClick="submitForm('delete')"></td>
+				<td><input type="button" value="쓰기" OnClick="submitForm('WRITE')"></td>
+				<td><input type="button" value="삭제" OnClick="submitForm('DELETE')"></td>
 			</tr>
 		</table>
 	</form>

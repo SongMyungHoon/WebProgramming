@@ -19,7 +19,7 @@
 	%>
 </head>
 <body>
-	<form method="post" name="listForm">
+	<form method="post" name="viewForm">
 		<table width="650px" border="1px" cellspacing="0" cellpadding="5">
 			<tr>
 				<td><b>번호</b></td>

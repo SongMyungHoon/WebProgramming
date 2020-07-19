@@ -6,20 +6,25 @@ import java.util.*;
 import domain.Student;
 
 public class StudentDao {
+	
 	// Dao 클래스에서 사용될 공유 connection 객체
 	private static Connection connection;
+	
 	// singleton pattern applied default constructor
 	private StudentDao() {}	
+	
 	// declaring Lazy-Holder(중첩 클래스)
 	private static class LazyHolder {
 		/* static: 클래스 로딩 시점에 한번만 호출됨
 		 * final: 값이 다시 할당되지 않음 */
 		private static final StudentDao instance = new StudentDao();
 	}
+	
 	// getInstance method 호출 시 LazyHolder 호출
 	public static StudentDao getInstance() {
 		return LazyHolder.instance;
 	}
+	
 	// database(MySQL)과 연동시켜 관련 정보를 static Connection 객체에 저장
 	public static void dbConnect() {
 		final String id = "root";

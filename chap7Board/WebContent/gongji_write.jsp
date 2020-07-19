@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="service.*, domain.*"%>
+    import="service.*, domain.*, java.sql.Date, java.time.LocalDate"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
@@ -14,36 +14,29 @@
 		  crossorigin="anonymous">
 	<%
 		BoardService boardService = new BoardService();
-		int postId = Integer.parseInt(request.getParameter("key"));
-		Post post = boardService.selectOne(postId);
+		String mode = request.getParameter("key") == null ? "null": request.getParameter("key");
+		Date date = Date.valueOf(LocalDate.now());
+		String resultState = "";
+		int postId = 0; // MySQL에서 auto_increment 옵션이 걸려 있으므로 insert에 사용되지 않는 값
+		
+		if(mode.equals("INSERT")) {
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			Post insertedPost = new Post(postId, title, date, content);
+			resultState = boardService.insert(insertedPost);
+		} else {
+			postId = Integer.parseInt(request.getParameter("id"));
+			String updatedTitle = request.getParameter("title");
+			String updatedContent = request.getParameter("content");
+			Post updatedPost = new Post(postId, updatedTitle, date, updatedContent);
+			resultState = boardService.update(updatedPost);
+		}
 	%>
 </head>
 <body>
-	<form method="post" name="listForm">
-		<table width="650px" border="1px" cellspacing="0" cellpadding="5">
-			<tr>
-				<td><b>번호</b></td>
-				<td><%=post.getId() %></td>
-			</tr>
-			<tr>
-				<td><b>제목</b></td>
-				<td><%=post.getTitle() %></td>
-			</tr>
-			<tr>
-				<td><b>일자</b></td>
-				<td><%=post.getDate().toLocalDate() %></td>
-			</tr>
-			<tr>
-				<td><b>내용</b></td>
-				<td><%=post.getContent() %></td>
-			</tr>
-		</table>
-		<table width="650">
-			<tr>
-				<td width="600"></td>
-				<td><input type="button" value="목록" OnClick="location.href='gongji_list.jsp'"></td>
-				<td><input type="button" value="수정" OnClick="location.href='gongji_update.jsp?key=<%=post.getId()%>'"></td>
-		</table>
-	</form>
+	<SCRIPT LANGUAGE="JavaScript">
+		window.alert("<%=resultState %>");
+		location.href="gongji_view.jsp?key=<%=postId%>";
+	</SCRIPT>
 </body>
 </html>

@@ -17,6 +17,11 @@ public class BoardService {
 		return boardDao.selectAll();
 	}
 	
+	public Post lastInsertedPost() {
+		int lastId = boardDao.lastInsertedPostId();
+		return boardDao.selectOne(lastId);
+	}
+	
 	// D: 해당 게시글을 Database에서 삭제
 	public String delete(int postId) {
 		if(boardDao.delete(postId)) {

@@ -13,14 +13,14 @@
 		  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
 		  crossorigin="anonymous">
 	<%
-		BoardService boardService = new BoardService();
+		ReBoardService reBoardService = new ReBoardService();
 			// gongji_update.jsp에서 key: id로 post의 id 값을 parameter로 받아온다.
 			int postId = Integer.parseInt(request.getParameter("id"));
 	%>
 </head>
 <body>
 	<SCRIPT LANGUAGE="JavaScript">
-		window.alert("<%=boardService.delete(postId) %>");
+		window.alert("<%=reBoardService.delete(postId) %>");
 		location.href="gongji_list.jsp";
 	</SCRIPT>
 </body>

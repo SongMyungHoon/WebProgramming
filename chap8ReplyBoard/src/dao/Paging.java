@@ -4,7 +4,7 @@ public class Paging {
 	// variable declaration & initializing
 	private ReBoardDao reBoardDao = ReBoardDao.getInstance();
 	private int rowPerPage = 10;                            // 한 화면에 출력할 데이터 수
-	private int pagingNumPerBlock = 10; // paging line 한 줄에 출력되는 페이지 번호의 수
+	private int pagingNumPerBlock = 5; // paging line 한 줄에 출력되는 페이지 번호의 수
 	private int totalRow = reBoardDao.selectAll().size();	// row count variable
 	private int currentPage = 0;
 	private int fromPT = 0;

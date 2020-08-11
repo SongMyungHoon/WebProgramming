@@ -25,7 +25,7 @@
 		List<RePost> postList = reBoardService.selectAll();
 		StringBuilder titleBuilder = new StringBuilder();
 		int rowPerPage = 10;	// 한 화면에 출력할 게시글 수
-		int pagingNumPerBlock = 10;	// paging line 한 줄에 출력되는 페이지 번호의 수
+		int pagingNumPerBlock = 5;	// paging line 한 줄에 출력되는 페이지 번호의 수
 		/* String getParameter("variable") method
          * request 객체의 parameter 변수 variable에 저장된 변수를 얻어내는 method return 값 = String 
          * 현재 페이지 = 브라우저의 url 중 pg로 입력 받음 (get 방식)
@@ -52,8 +52,10 @@
 		</tr>
 		<%
 			if(postList.size() > 0 && postList != null) {
+				for(int i = fromPT; i < (fromPT + cntPT); i++) {	
+					RePost post = postList.get(i);
 				// DB 내 모든 post에 대하여 반복 수행
-				for(RePost post : postList) {
+				// for(RePost post : postList) {
 					if(post.getRelevel() > 0) { // 댓글 레벨이 1 이상이면
 						// 댓글 레벨만큼 하이픈 추가
 						for(int relevel = 0; relevel < post.getRelevel(); relevel++) {
@@ -92,55 +94,80 @@
 			<td width="500"></td>
 			<td><input type="button" value="신규" OnClick="window.location='gongji_insert.jsp'"></td>
 	</table>
-	<!--맨 처음 페이지로 이동 ["<<""]-->
-	<a href="gongji_list.jsp?pg=1&from=0&cnt=<%=rowPerPage%>">&lt&lt</a>
-	<!--이전 페이지블럭으로 이동 ["<"]-->
-    <%
-    	if(paging.getPrevPage() > 0) {
-    %>
-		<a href="gongji_list.jsp?pg=<%=paging.getPrevPage()%>
-			&from=<%=paging.getPrevPage()*rowPerPage-rowPerPage%>
-			&cnt=<%=rowPerPage%>">
-			&lt
-		</a>
-	<%
-		}
-	
-		for(int i = 1 + paging.getPrevPage();
-						i < paging.getNextPage() && i <= paging.getTotalPage() ; i++) { 
-					if(i == paging.getTotalPage()) {
-	%>
-			<a href="gongji_list.jsp?
-				pg=<%=i%>
-				&from=<%=i*rowPerPage-rowPerPage%>
-				&cnt=<%=paging.getTotalRow()-(int)(paging.getTotalRow()/rowPerPage)*rowPerPage%>">
-				<%=i%>
-			</a>
-		<%} else {%>
-			<a href="gongji_list.jsp?
-				pg=<%=i%>
-				&from=<%=i*rowPerPage-rowPerPage%>
-				&cnt=<%=rowPerPage%>">
-				<%=i%>
-			</a>
-		<%
-		}
-	}
-	if(paging.getTotalRow() >= paging.getNextPage()) { %>
-                    <!--다음 페이지블럭으로 이동-->
-		<a href="gongji_list.jsp?
-			pg=<%=paging.getNextPage()%>
-			&from=<%=paging.getNextPage()*rowPerPage-rowPerPage%>
-			&cnt=<%=rowPerPage%>">
-			&gt
-		</a>
-                    <!--맨 마지막 페이지블럭으로 이동-->
-		<a href="gongji_list.jsp?
-			pg=<%=paging.getTotalPage()%>
-			&from=<%=(int)(paging.getTotalRow()/rowPerPage)*rowPerPage%>
-			&cnt=<%=paging.getTotalRow()-(int)(paging.getTotalRow()/rowPerPage)*rowPerPage%>">
-			&gt&gt
-		</a>
-	<%}%>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<ul class="pagination">
+					<li class="page-item">
+					<%if(paging.getPrevPage() > 0) {%>
+				    	<!--맨 처음 페이지로 이동 ["<<""]-->
+						<a class="page-link" href="gongji_list.jsp?pg=1&from=0&cnt=<%=rowPerPage%>">&lt&lt</a>
+					</li>
+						<!--이전 페이지블럭으로 이동 ["<"]-->
+					<li class="page-item">
+						<a class="page-link" href="gongji_list.jsp?pg=<%=paging.getPrevPage()%>
+							&from=<%=paging.getPrevPage()*rowPerPage-rowPerPage%>
+							&cnt=<%=rowPerPage%>">
+							&lt
+						</a>
+					</li>
+					<%}
+						for(int i = 1 + paging.getPrevPage();
+							    i < paging.getNextPage() && i <= paging.getTotalPage() ; i++) { 
+							
+							if(i == paging.getTotalPage()) {%>
+							
+					<li class="page-item">
+						<a class="page-link" href="gongji_list.jsp?
+							pg=<%=i%>
+							&from=<%=i*rowPerPage-rowPerPage%>
+							<%if(paging.getTotalRow() % rowPerPage == 0) {%>
+								&cnt=<%=rowPerPage%>">
+							<%} else { %>
+								&cnt=<%=paging.getTotalRow()-(int)(paging.getTotalRow()/rowPerPage)*rowPerPage%>">
+							<% }%>
+							<%=i%>
+						</a>
+					</li>
+						<%} else {%>
+					<li class="page-item">
+						<a class="page-link" href="gongji_list.jsp?
+							pg=<%=i%>
+							&from=<%=i*rowPerPage-rowPerPage%>
+							&cnt=<%=rowPerPage%>">
+							<%=i%>
+						</a>
+					</li>
+					<%
+						  }
+						}
+						if(paging.getTotalPage() >= paging.getNextPage()) { %>
+		        	<!--다음 페이지블럭으로 이동-->
+					<li class="page-item">
+						<a class="page-link" href="gongji_list.jsp?
+							pg=<%=paging.getNextPage()%>
+							&from=<%=paging.getNextPage()*rowPerPage-rowPerPage%>
+							<%if(currentPage + 1 == paging.getTotalPage()) {%>
+								&cnt=<%=paging.getTotalRow()-(int)(paging.getTotalRow()/rowPerPage)*rowPerPage%>">
+							<%} else { %>
+								&cnt=<%=rowPerPage%>">
+							<%} %>
+							&gt
+						</a>
+					</li>
+			    	<!--맨 마지막 페이지블럭으로 이동-->
+					<li class="page-item">
+						<a class="page-link" href="gongji_list.jsp?
+							pg=<%=paging.getTotalPage()%>
+							&from=<%=(int)(paging.getTotalRow()/rowPerPage)*rowPerPage%>
+							&cnt=<%=paging.getTotalRow()-(int)(paging.getTotalRow()/rowPerPage)*rowPerPage%>">
+							&gt&gt
+						</a>
+					</li>
+					<%}%>
+				</ul>
+			</div>		
+		</div>
+	</div>
 </body>
 </html>

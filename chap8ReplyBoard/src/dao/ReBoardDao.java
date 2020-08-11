@@ -125,13 +125,17 @@ public class ReBoardDao {
 		Statement statement = null;
 		StringBuilder stringBuilder = new StringBuilder();
 		// Test data insert query
-		String query = stringBuilder.append("insert into gongji (title, date, content) values ")
-						.append("('공지사항1', date(now()),'공지사항내용1'),")
-						.append("('공지사항2', date(now()),'공지사항내용2'),")
-						.append("('공지사항3', date(now()),'공지사항내용3'),")
-						.append("('공지사항4', date(now()),'공지사항내용4'),")
-						.append("('공지사항5', date(now()),'공지사항내용5');")
-						.toString();
+		 
+		stringBuilder.append("insert into gongji (title, date, content) values ");
+		for(int i = 0; i < 100; i++) {
+			stringBuilder.append("('공지사항").append(i).append("', date(now()),'").append(i).append("')");	
+			if(i == 99) {
+				stringBuilder.append(";");
+			} else {
+				stringBuilder.append(",");
+			}
+		}
+		String query = stringBuilder.toString();
 		try {
 			if(connection != null) {
 				statement = connection.createStatement();
@@ -277,6 +281,7 @@ public class ReBoardDao {
 									, resultSet.getInt("recnt")
 									, resultSet.getInt("viewcnt"));
 				}
+				System.out.println("selectOne method operated");
 				// object closing part
 				preparedStatement.close();
 				resultSet.close();
@@ -309,6 +314,7 @@ public class ReBoardDao {
 				while(resultSet.next()) {
 					lastId = resultSet.getInt("max_id");
 				}
+				System.out.println("lastInsertedPostID method operated");
 				// object closing part
 				statement.close();
 				resultSet.close();
@@ -364,6 +370,7 @@ public class ReBoardDao {
 										  , resultSet.getInt("recnt")
 								 		  , resultSet.getInt("viewcnt")));
 				}
+				System.out.println("selectAll method operated");
 				// object closing part
 				statement.close();
 				resultSet.close();

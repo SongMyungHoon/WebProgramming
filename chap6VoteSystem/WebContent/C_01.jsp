@@ -55,15 +55,15 @@
 	<div class="d-flex p-2">
 		<span>
 			<input type="button" class="tapBox" value="후보등록"
-				   OnClick="javascript:location.href='./A_01.jsp'">
+				   OnClick="javascript:location.href='registration'">
 	    </span>
 		<span>
 			<input type="button" class="tapBox" value="투표" 
-				   OnClick="javascript:location.href='./B_01.jsp'">
+				   OnClick="javascript:location.href='vote'">
 	    </span>
 		<span>
 			<input type="button" class="tapBox" style="background-color:yellow;" value="개표결과"
-			       OnClick="javascript:location.href='./C_01.jsp'">
+			       OnClick="javascript:location.href='result'">
 		</span>
 	</div>
 	<p>

@@ -64,7 +64,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="loanPeriodHead">대출기간</span>
                         </div>
-                        <input type="text" id="loanPeriodInputBox_data_input" class="form-control" aria-describedby="loanPeriodHead" value="10" />
+                        <input type="text" id="loanPeriodInputBox_data_input" class="form-control" aria-describedby="loanPeriodHead" value="0" />
                         <div class="input-group-append">
                             <span class="input-group-text">개월</span>
                         </div>
@@ -108,75 +108,15 @@
                 ※ 대출 상환 방법
                 <br>
                 &nbsp&nbsp&nbsp원리금균등상환 - 가장 일반적인 방법으로, 원금과 이자를 합한 상환금액이 매달 동일합니다.
-                <hr>
             </div>
+            <hr>
             <div class="text-right cell-margin" >
-                <input type="button" class="btn btn-success" value="계산하기">
+                <input type="button" class="btn btn-success" value="계산하기" onclick="javascript: result_cal()">
                 <input type="button" class="btn btn-danger" value="다시 작성" onclick="location.href='index.html'">
             </div>
         </div>
         <div class="boxMargin-right"></div>
     </div>
-    
-    <div class="row">
-        <div class="boxMargin-left"></div>
-        <!-- 데이터 출력 박스 -->
-        <div id="outputBox" class="div-block-col-head">
-            <br>
-            <div class="row cell-margin text-center">
-                <div id="col-head" class="col_height border border-secondary">대출금</div>
-                <div id="col-body" class="col_height border border-secondary">11,000,000 원</div>
-            </div>
-            <div class="row cell-margin text-center">
-                <div id="col-head" class="col_height border border-secondary">대출금리</div>
-                <div id="col-body" class="col_height border border-secondary">연 10 %</div>
-            </div>
-            <div class="row cell-margin text-center">
-                <div id="col-head" class="col_height border border-secondary">대출기간</div>
-                <div id="col-body" class="col_height border border-secondary">24 개월 (2 년)</div>
-            </div>
-            <div class="row cell-margin text-center">
-                <div id="col-head" class="col_height border border-secondary">거치기간</div>
-                <div id="col-body" class="col_height border border-secondary">없음</div>
-            </div>
-            <div class="row cell-margin text-center">
-                <div id="col-head" class="col_height border border-secondary">상환방법</div>
-                <div id="col-body" class="col_height border border-secondary">원리금균등반환</div>
-            </div>
-            <div class="row cell-margin text-center">
-                <div id="col-head" class="col_height border border-secondary">총 이자</div>
-                <div id="col-body" class="col_height border border-secondary">1,182,160 원</div>
-                
-            </div>
-            <br>
-            <div class="cell-margin text-right">
-                <input type="button" class="btn btn-danger" value="다시 계산하기" onclick="location.href='index.html'">
-            </div>
-            <br>
-            <div class="row cell-margin">
-                <div id="col-num" class="head_color col_height col_text_center border border-secondary">No</div>
-                <div id="col-size1" class="head_color col_height col_text_center border border-secondary">상환금</div>
-                <div id="col-size1" class="head_color col_height col_text_center border border-secondary">납입원금</div>
-                <div id="col-size1" class="head_color col_height col_text_center border border-secondary">이자</div>
-                <div id="col-size2" class="head_color col_height col_text_center border border-secondary">납입원금계</div>
-                <div id="col-size2" class="head_color col_height col_text_center border border-secondary">잔금</div>
-            </div>
-            <div class="row cell-margin">
-                <div id="col-num" class="num_color col_height col_text_center border border-secondary">1</div>
-                <div id="col-size1" class="col_height col_text_right col_pad_r10 border border-secondary">507,594</div>
-                <div id="col-size1" class="col_height col_text_right col_pad_r10 border border-secondary">415,934</div>
-                <div id="col-size1" class="col_height col_text_right col_pad_r10 border border-secondary">91,660</div>
-                <div id="col-size2" class="col_height col_text_right col_pad_r10 border border-secondary">415,934</div>
-                <div id="col-size2" class="col_height col_text_right col_pad_r10 border border-secondary">10,584,066</div>
-            </div>
-            <br>
-            <div class="cell-margin text-right">
-                <input type="button" class="btn btn-danger" value="다시 계산하기" onclick="location.href='index.html'">
-            </div>
-        </div>
-        <div class="boxMargin-right"></div>
-    </div>
-
     <script type="text/javascript" src="./index.js"></script>
 </body>
 </html>

@@ -2,7 +2,11 @@
 * {
     font-family: 'Nanum Gothic', sans-serif;
 }
-#inputBox, #outputBox {
+#outputBox {
+    visibility: hidden;
+}
+
+.dataBox {
     width: 80%;
     float: left;
 }
@@ -16,7 +20,7 @@
     background-color: aliceblue;
     float: left;
 }
-input[type=text]{
+input[type=number]{
     text-align: right;
 }
 #clear {
@@ -25,11 +29,6 @@ input[type=text]{
 .cell-margin {
     margin-left: 10px;
     margin-right: 10px;
-}
-
-.div-block-col-head {
-    display: inline-block;
-    width: 20%;
 }
 .col_text_center {
     text-align: center;
@@ -49,23 +48,23 @@ input[type=text]{
 .num_color {
     background-color: #f8f8f8 ;
 }
-#col-head {
+.output_first_tbl_col_head {
     background-color: lightgrey;
     width: 25%;
     text-align: center;
 }
-#col-body {
+.output_first_tbl_col_body {
     width: 75%;
     text-align: left;
     padding-left: 10px;
 }
-#col-num {
+.col_num {
     width: 10%;
 }
-#col-size1 {
+.col_size1 {
     width: 16%;
 }
-#col-size2 {
+.col_size2 {
     width: 21%;
 }
 .col_pad_r10 {

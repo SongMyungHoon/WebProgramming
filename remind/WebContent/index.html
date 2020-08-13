@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <body>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="test.css" type="text/css" rel="stylesheet" />
+    <link href="bootstrap.css" type="text/css" rel="stylesheet" />
+    <link href="index.css" type="text/css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    
     <!-- 데이터 입력 박스 -->
-    <div class="row">
+    <div id="inputBox" class="row">
         <div class="boxMargin-left"></div>
 
-        <div id="inputBox">
+        <div class="dataBox">
             <hr>
             <!-- 대출금 입력 박스 -->
             <div id="loanInputBox">
                 <div id="loanInputBox_data" class="cell-margin">
+                    <div class="text-center">
+                        <label for="loanInputBox_data_input"><h4>대출금</h4></label>
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon3">대출금</span>
                         </div>
-                        <input type="text" id="loanInputBox_data_input" class="form-control" aria-describedby="basic-addon3" value="0" />
+                        <input type="number" id="loanInputBox_data_input" class="form-control" aria-describedby="basic-addon3" value="0"/>
                         <div class="input-group-append">
                             <span class="input-group-text">원</span>
                         </div>
                     </div>
+                    <div class="text-right">
+                        <span id="loanInputBox_data_print">0 원</span>
+                    </div>
+                    <br>
                     <div id="loanInputBox_data_butten" class="text-right">
-                        <input type="button" class="btn btn-outline-secondary" value="십만원" Onclick="inputValueChange('loanInputBox_data_input', '100000')">
-                        <input type="button" class="btn btn-outline-secondary" value="백만원" Onclick="inputValueChange('loanInputBox_data_input', '1000000')">
-                        <input type="button" class="btn btn-outline-secondary" value="천만원" Onclick="inputValueChange('loanInputBox_data_input', '10000000')">
-                        <input type="button" class="btn btn-outline-secondary" value="일억원" Onclick="inputValueChange('loanInputBox_data_input', '100000000')">
+                        <input type="button" class="btn btn-outline-secondary" value="십만원" onclick="loanAddOnClick(100000)">
+                        <input type="button" class="btn btn-outline-secondary" value="백만원" onclick="loanAddOnClick(1000000)">
+                        <input type="button" class="btn btn-outline-secondary" value="천만원" onclick="loanAddOnClick(10000000)">
+                        <input type="button" class="btn btn-outline-secondary" value="일억원" onclick="loanAddOnClick(100000000)">
                     </div>
                 </div>
             </div>
@@ -35,12 +44,14 @@
             <!-- 대출금리 입력 박스 -->
             <div id="loanRateInputBox">
                 <div id="loanRateInputBox_data" class="cell-margin">
-                    <label for="loanRateInputBox_data_input">대출금리</label>
+                    <div class="text-center">
+                        <label for="loanRateInputBox_data_input"><h4>대출금리</h4></label>
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="loanRateHead">연</span>
                         </div>
-                        <input type="text" id="loanRateInputBox_data_input" class="form-control" aria-describedby="loanRateHead" value="0" />
+                        <input type="number" id="loanRateInputBox_data_input" class="form-control" aria-describedby="loanRateHead" value="0"/>
                         <div class="input-group-append">
                             <span class="input-group-text">%</span>
                         </div>
@@ -60,11 +71,14 @@
             <!-- 대출기간 입력 박스 -->
             <div id="loanPeriodInputBox">
                 <div id="loanPeriodInputBox_data" class="cell-margin">
+                    <div class="text-center">
+                        <label for="loanPeriodInputBox_data_input"><h4>대출기간</h4></label>
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="loanPeriodHead">대출기간</span>
                         </div>
-                        <input type="text" id="loanPeriodInputBox_data_input" class="form-control" aria-describedby="loanPeriodHead" value="0" />
+                        <input type="number" id="loanPeriodInputBox_data_input" class="form-control" aria-describedby="loanPeriodHead" value="0"/>
                         <div class="input-group-append">
                             <span class="input-group-text">개월</span>
                         </div>
@@ -86,11 +100,14 @@
             <!-- 거치기간 입력 박스 -->
             <div id="unredeemedTermInputBox">
                 <div id="unredeemedTermInputBox_data" class="cell-margin">
+                    <div class="text-center">
+                        <label for="unredeemedTermInputBox_data_input"><h4>거치기간</h4></label>
+                    </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="unredeemedTermHead">거치기간</span>
                         </div>
-                        <input type="text" id="unredeemedTermInputBox_data_input" class="form-control" aria-describedby="loanPeriodHead" value="0" />
+                        <input type="number" id="unredeemedTermInputBox_data_input" class="form-control" aria-describedby="loanPeriodHead" value="0"/>
                         <div class="input-group-append">
                             <span class="input-group-text">개월</span>
                         </div>
@@ -111,11 +128,58 @@
             </div>
             <hr>
             <div class="text-right cell-margin" >
-                <input type="button" class="btn btn-success" value="계산하기" onclick="javascript: result_cal()">
-                <input type="button" class="btn btn-danger" value="다시 작성" onclick="location.href='index.html'">
+                <input type="button" class="btn btn-success" value="계산하기" onclick="javascript: resultCal()">
+                <input type="button" class="btn btn-danger" value="다시 작성" onclick="javascript: reWrite()">
             </div>
         </div>
         <div class="boxMargin-right"></div>
+    </div>
+    <div id="outputBox">
+        <div class="row">
+            <div class="boxMargin-left"></div>
+            <div class="dataBox"><br>
+                <div class="row cell-margin text-center">
+                    <div class="output_first_tbl_col_head col_height border border-secondary">대출금</div>
+                    <div id="output_first_tbl_loan" class="output_first_tbl_col_body col_height border border-secondary">0 원</div>
+                </div>
+                <div class="row cell-margin text-center">
+                    <div class="output_first_tbl_col_head col_height border border-secondary">대출금리</div>
+                    <div id="output_first_tbl_rate" class="output_first_tbl_col_body col_height border border-secondary">연 0 %</div>
+                </div>
+                <div class="row cell-margin text-center">
+                    <div class="output_first_tbl_col_head col_height border border-secondary">대출기간</div>
+                    <div id="output_first_tbl_period" class="output_first_tbl_col_body col_height border border-secondary">0 개월 ( 년)</div>
+                </div>
+                <div class="row cell-margin text-center">
+                    <div class="output_first_tbl_col_head col_height border border-secondary">거치기간</div>
+                    <div id="output_first_tbl_unredeemedTerm" class="output_first_tbl_col_body col_height border border-secondary">없음</div>
+                </div>
+                <div class="row cell-margin text-center">
+                    <div class="output_first_tbl_col_head col_height border border-secondary">총 이자</div>
+                    <div id="output_first_tbl_total_interest" class="output_first_tbl_col_body col_height border border-secondary">0 원</div>
+                </div>
+                <br>
+                <div class="cell-margin text-right">
+                    <input type="button" class="btn btn-danger" value="다시 계산하기" onclick="javascript: retry()">
+                </div>
+                <br>
+                <div class="row cell-margin">
+                    <div class="col_num head_color col_height col_text_center border border-secondary">No</div>
+                    <div class="col_size1 head_color col_height col_text_center border border-secondary">상환금</div>
+                    <div class="col_size1 head_color col_height col_text_center border border-secondary">납입원금</div>
+                    <div class="col_size1 head_color col_height col_text_center border border-secondary">이자</div>
+                    <div class="col_size2 head_color col_height col_text_center border border-secondary">납입원금계</div>
+                    <div class="col_size2 head_color col_height col_text_center border border-secondary">잔금</div>
+                </div>
+                <div id="monthly_result_cal"></div>
+
+                <br>
+                <div class="cell-margin text-right">
+                    <input type="button" class="btn btn-danger" value="다시 시작하기" onclick="javascript: retry()">
+                </div>
+            </div>
+            <div class="boxMargin-right"></div>
+        </div>
     </div>
     <script type="text/javascript" src="./index.js"></script>
 </body>
